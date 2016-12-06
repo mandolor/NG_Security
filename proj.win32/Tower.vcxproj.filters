@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\Sources\AppDelegate.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\MainMenu.cpp">
+      <Filter>Screens\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\2BytesScreen.cpp">
+      <Filter>Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\AwebiaScreen.cpp">
+      <Filter>Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\FailScreen.cpp">
+      <Filter>Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\LevelsScreen.cpp">
+      <Filter>Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\WinScreen.cpp">
+      <Filter>Screens\Screens</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\GameScene.cpp">
+      <Filter>Core\Game Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\GamePhysics.cpp">
+      <Filter>Core\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\SphereContainer.cpp">
+      <Filter>Core\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\Sphere.cpp">
+      <Filter>Core\Game Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\SpriteCache.cpp">
+      <Filter>Core\Game Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Sources\GlobalSceneSensor.cpp">
+      <Filter>Core\Game Logic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Sources\AppDelegate.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\AppMacros.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\MainMenu.h">
+      <Filter>Screens\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\2BytesScreen.h">
+      <Filter>Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\AwebiaScreen.h">
+      <Filter>Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\FailScreen.h">
+      <Filter>Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\LevelsScreen.h">
+      <Filter>Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\WinScreen.h">
+      <Filter>Screens\Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\GameScene.h">
+      <Filter>Core\Game Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\GamePhysics.h">
+      <Filter>Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\GlobalGameStates.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\SphereContainer.h">
+      <Filter>Core\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\GameObject.h">
+      <Filter>Core\Game Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\Sphere.h">
+      <Filter>Core\Game Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\SpriteCache.h">
+      <Filter>Core\Game Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Sources\GlobalSceneSensor.h">
+      <Filter>Core\Game Logic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{7c48806b-dc25-4d5c-acbd-a3087d3f3dcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{8ec3fc58-8ce8-444a-8827-a7b9bb30d38b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{75e87581-1a4e-447e-a6f9-5b1f700f395f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Screens">
+      <UniqueIdentifier>{bcfc158e-5cb5-44ac-9f6d-6410fe609970}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens\Menu">
+      <UniqueIdentifier>{b6514aab-3ab3-44df-be2e-9632b3e10892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Game Scene">
+      <UniqueIdentifier>{6b140864-ecf4-48b1-9534-bc04cbf86b24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Physics">
+      <UniqueIdentifier>{266d1666-813c-4120-a763-e7d20db577c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Managers">
+      <UniqueIdentifier>{f863b7ff-9bfc-40a5-acc6-cc485b688fc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Game Logic">
+      <UniqueIdentifier>{bb67b6de-9ad8-4c4f-bb8b-32a67ac72ec5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
