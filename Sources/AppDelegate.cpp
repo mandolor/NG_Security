@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "AwebiaScreen.h"
 #include "AppMacros.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -60,7 +61,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     register_all_packages();
 
     // create a scene. it's an autorelease object
-    auto scene = AwebiaScreen::createScene();
+    //auto scene = AwebiaScreen::createScene();
+	auto scene = GameScene::createScene();
 
     // run
     director->runWithScene(scene);

@@ -35,15 +35,16 @@ public:
 private:
 	void _generateFoods();
 	void _generatePlayer();
-	void _generateEnemies();
+	
+	//void _generateEnemies();
 	
 	void _correctionMapBorders( cocos2d::Vec2& i_camera_pos );
-	
 	void _collidePlayer();
-	void _killedPlayer();
+
+	//void _killedPlayer();
 	
 	void _parallaxCreate();
-	void _parallaxProcess();
+	//void _parallaxProcess();
 	
 private:
 	bool							m_touchMoved;

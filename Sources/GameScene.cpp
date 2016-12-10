@@ -59,14 +59,14 @@ bool GameScene::init()
 	auto rootNode = sceneNode->getChildByName( "root" );
 	mp_game_layer = static_cast< cocos2d::Node* >( rootNode->getChildByName( "game_layer" ) );
 
-	auto ux_node		= static_cast< cocos2d::Node* >( rootNode->getChildByName( "ux_node" ) );
-	auto label_yellow	= static_cast< cocos2d::ui::Text* >( ux_node->getChildByName( "label_yellow" ) );
-
-	mp_label_red_count	= static_cast< cocos2d::ui::Text* >( ux_node->getChildByName( "label_red_count" ) );
-	mp_label_yell_count = static_cast< cocos2d::ui::Text* >( ux_node->getChildByName( "label_yellow_count" ) );
-	
-	label_yellow->setPositionX( label_yellow->getPositionX() - delta_width );
-	mp_label_yell_count->setPositionX( mp_label_yell_count->getPositionX() - delta_width );
+// 	auto ux_node		= static_cast< cocos2d::Node* >( rootNode->getChildByName( "ux_node" ) );
+// 	auto label_yellow	= static_cast< cocos2d::ui::Text* >( ux_node->getChildByName( "label_yellow" ) );
+// 
+// 	mp_label_red_count	= static_cast< cocos2d::ui::Text* >( ux_node->getChildByName( "label_red_count" ) );
+// 	mp_label_yell_count = static_cast< cocos2d::ui::Text* >( ux_node->getChildByName( "label_yellow_count" ) );
+// 	
+// 	label_yellow->setPositionX( label_yellow->getPositionX() - delta_width );
+// 	mp_label_yell_count->setPositionX( mp_label_yell_count->getPositionX() - delta_width );
 	
 	auto touchListener = EventListenerTouchOneByOne::create();
 	touchListener->setSwallowTouches( true );
@@ -78,10 +78,10 @@ bool GameScene::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority( touchListener, this );
 	mp_game_physics->initialise();
 
-	_generateFoods();
-	_generatePlayer();
+	//_generateFoods();
+	//_generatePlayer();
 
-	_generateEnemies();
+	//_generateEnemies();
 	_parallaxCreate();
 	
 	mp_sphere_container->showAll();
@@ -112,20 +112,20 @@ void GameScene::_parallaxCreate()
 }
 
 //---------------------------------------------------------------------
-void GameScene::_parallaxProcess()
-{
-	Vec2 pos = mp_sphere_container->getPlayerSphere()->getPosition();
-	float screen_size = Director::getInstance()->getVisibleSize().width;
-	
-	float x_start_scroll = screen_size / 2;
-	float x_end_scroll = GameConstants::world_width - x_start_scroll;
-	
-	if ( ( pos.x > x_start_scroll ) && ( pos.x < x_end_scroll ) )
-	{
-		float pos_x = pos.x - x_start_scroll;
-		mp_game_layer->setPositionX( -pos_x );
-	}
-}
+// void GameScene::_parallaxProcess()
+// {
+// 	Vec2 pos = mp_sphere_container->getPlayerSphere()->getPosition();
+// 	float screen_size = Director::getInstance()->getVisibleSize().width;
+// 	
+// 	float x_start_scroll = screen_size / 2;
+// 	float x_end_scroll = GameConstants::world_width - x_start_scroll;
+// 	
+// 	if ( ( pos.x > x_start_scroll ) && ( pos.x < x_end_scroll ) )
+// 	{
+// 		float pos_x = pos.x - x_start_scroll;
+// 		mp_game_layer->setPositionX( -pos_x );
+// 	}
+// }
 
 //---------------------------------------------------------------------
 void GameScene::_generateFoods()
@@ -167,11 +167,11 @@ void GameScene::_collidePlayer()
 }
 
 //---------------------------------------------------------------------
-void GameScene::_killedPlayer()
-{
-	auto scene = FailScreen::createScene();
-	Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
-}
+// void GameScene::_killedPlayer()
+// {
+// 	auto scene = FailScreen::createScene();
+// 	Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
+// }
 
 //---------------------------------------------------------------------
 void GameScene::_generatePlayer()
@@ -186,26 +186,26 @@ void GameScene::_generatePlayer()
 	p_sphere->setPosition( cocos2d::Vec2( 100, 100 ) );
 	
 	p_sphere->setCollideCallback( std::bind( &GameScene::_collidePlayer, this ) );
-	p_sphere->setKilledCallback( std::bind( &GameScene::_killedPlayer, this ) );
+	//p_sphere->setKilledCallback( std::bind( &GameScene::_killedPlayer, this ) );
 }
 
 //---------------------------------------------------------------------
-void GameScene::_generateEnemies()
-{
-	int start_index = static_cast<int> ( ObjectCollisionType::BlackSphere );
-	int end_index = static_cast<int> ( ObjectCollisionType::TransformSphere );
-
-	for ( int index = start_index; index <= end_index; ++index )
-	{
-		ObjectCollisionType type = static_cast<ObjectCollisionType> ( index );
-		Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[ index ] );
-	
-		p_sphere->attachTo( mp_game_layer, SPHERE_OBJECT_ORDER );
-		p_sphere->setNewRandomPosition();
-
-		mp_sphere_container->addPhysicsObject( p_sphere );
-	}
-}
+// void GameScene::_generateEnemies()
+// {
+// 	int start_index = static_cast<int> ( ObjectCollisionType::BlackSphere );
+// 	int end_index = static_cast<int> ( ObjectCollisionType::TransformSphere );
+// 
+// 	for ( int index = start_index; index <= end_index; ++index )
+// 	{
+// 		ObjectCollisionType type = static_cast<ObjectCollisionType> ( index );
+// 		Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[ index ] );
+// 	
+// 		p_sphere->attachTo( mp_game_layer, SPHERE_OBJECT_ORDER );
+// 		p_sphere->setNewRandomPosition();
+// 
+// 		mp_sphere_container->addPhysicsObject( p_sphere );
+// 	}
+// }
 
 //---------------------------------------------------------------------
 bool GameScene::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event )
@@ -272,7 +272,7 @@ void GameScene::update( float dt )
 	mp_game_physics->update();
 	mp_sphere_container->update();
 	
-	_parallaxProcess();
+	//_parallaxProcess();
 }
 
 //---------------------------------------------------------------------
