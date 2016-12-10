@@ -159,6 +159,7 @@ xcopy "$(OutDir)..\*.dll" "$(OutDir)" /D /Y</Command>
     <ClCompile Include="..\Sources\LevelsScreen.cpp" />
     <ClCompile Include="..\Sources\MainMenu.cpp" />
     <ClCompile Include="..\Sources\GlobalSceneSensor.cpp" />
+    <ClCompile Include="..\Sources\SceneBuilder.cpp" />
     <ClCompile Include="..\Sources\Sphere.cpp" />
     <ClCompile Include="..\Sources\SphereContainer.cpp" />
     <ClCompile Include="..\Sources\SpriteCache.cpp" />
@@ -178,6 +179,7 @@ xcopy "$(OutDir)..\*.dll" "$(OutDir)" /D /Y</Command>
     <ClInclude Include="..\Sources\LevelsScreen.h" />
     <ClInclude Include="..\Sources\MainMenu.h" />
     <ClInclude Include="..\Sources\GlobalSceneSensor.h" />
+    <ClInclude Include="..\Sources\SceneBuilder.h" />
     <ClInclude Include="..\Sources\Sphere.h" />
     <ClInclude Include="..\Sources\SphereContainer.h" />
     <ClInclude Include="..\Sources\SpriteCache.h" />

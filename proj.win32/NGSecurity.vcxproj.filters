@@ -43,6 +43,9 @@
     <ClCompile Include="..\Sources\GlobalSceneSensor.cpp">
       <Filter>Core\Game Logic</Filter>
     </ClCompile>
+    <ClCompile Include="..\Sources\SceneBuilder.cpp">
+      <Filter>Core\Scene Builder</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\AppDelegate.h">
@@ -96,6 +99,9 @@
     <ClInclude Include="..\Sources\GlobalSceneSensor.h">
       <Filter>Core\Game Logic</Filter>
     </ClInclude>
+    <ClInclude Include="..\Sources\SceneBuilder.h">
+      <Filter>Core\Scene Builder</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Core">
@@ -124,6 +130,9 @@
     </Filter>
     <Filter Include="Core\Game Logic">
       <UniqueIdentifier>{bb67b6de-9ad8-4c4f-bb8b-32a67ac72ec5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Scene Builder">
+      <UniqueIdentifier>{3d86fd6b-adbf-44a2-b133-fdc57d56db59}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

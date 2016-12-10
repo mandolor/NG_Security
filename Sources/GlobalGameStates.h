@@ -3,6 +3,7 @@
 
 #include <string>
 #include "cocos2d.h"
+#include <map>
 
 //---------------------------------------------------------------------
 enum class SphereLogicState
@@ -37,6 +38,23 @@ const std::string g_object_collision_sprite[] = { "",
 	"anims/point_rock.csb",
 	"textures/transform-sphere.png",
 };
+
+//---------------------------------------------------------------------
+enum class SecurityScene
+{
+	TestScene1,
+	TestScene2,
+	TestScene3
+};
+
+//---------------------------------------------------------------------
+struct SecuritySetupConfiguration
+{
+
+};
+
+//---------------------------------------------------------------------
+const std::map<SecurityScene, SecuritySetupConfiguration*> security_levels;
 
 //---------------------------------------------------------------------
 const int g_object_collision_radius[] = { 0, 26, 26, 38, 38, 38, 38, 38, 30 };
