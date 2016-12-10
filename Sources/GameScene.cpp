@@ -94,8 +94,8 @@ bool GameScene::init()
 void GameScene::_parallaxCreate()
 {
 	float screen_size = Director::getInstance()->getVisibleSize().width;
-
 	m_parallax = ParallaxNode::create();
+
 	for ( int i = 1; i <= PARALLAX_LAYERS_COUNT; ++i )
 	{
 		std::string layer_name = "layer_" + TO_STRING( i );
@@ -107,6 +107,7 @@ void GameScene::_parallaxCreate()
 		p_layer->removeFromParent();
 		m_parallax->addChild( p_layer, PARALLAX_LAYERS_COUNT - i, Vec2( x_ratio, 0 ), Vec2::ZERO );
 	}
+
 	mp_game_layer->addChild( m_parallax );
 }
 
@@ -220,12 +221,6 @@ void GameScene::onTouchMoved( cocos2d::Touch* touch, cocos2d::Event* event )
 		return;
 	
 	m_touchMoved = true;
-	
-//	cocos2d::Vec2 camera_position = touch->getDelta();
-//	camera_position += mp_game_layer->getPosition();
-//
-//	correctionMapBorders( camera_position );
-//	mp_game_layer->setPosition( camera_position );
 }
 
 //---------------------------------------------------------------------
