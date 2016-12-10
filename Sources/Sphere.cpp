@@ -123,12 +123,6 @@ void Sphere::collideWithObject( GameObject* const i_object )
 	float scaled_value = GameConstants::base_scale * m_mass / GameConstants::base_mass;
 	mp_sprite->setScale( scaled_value );
 
-// 	float koef = GameConstants::base_mass / m_mass;
-// 	m_velocity *= koef;
-// 
-// 	if ( m_velocity.length() <= cocos2d::Vec2( 1.0f, 1.0f ).length() )
-// 		m_velocity *= cocos2d::Vec2( 1.0f, 1.0f ).length();
-	
 	if ( m_collide_callback )
 		m_collide_callback();
 }
