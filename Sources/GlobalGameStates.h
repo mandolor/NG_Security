@@ -48,9 +48,19 @@ enum class SecurityScene
 };
 
 //---------------------------------------------------------------------
+struct SecurityObjectConfiguration
+{
+	unsigned int id;
+	float x;
+	float y;
+	cocos2d::Color3B color;
+};
+
+//---------------------------------------------------------------------
 struct SecuritySetupConfiguration
 {
-
+	std::vector<SecurityObjectConfiguration*> object_configurations;
+	std::vector<int> object_ids;
 };
 
 //---------------------------------------------------------------------
