@@ -72,8 +72,8 @@ const int g_object_collision_radius[] = { 0, 26, 26, 38, 38, 38, 38, 38, 30 };
 //---------------------------------------------------------------------
 namespace GameConstants
 {
-	const unsigned int world_width	= 2560;
-	const unsigned int world_height = 720;
+	const unsigned int world_width	= 1366;
+	const unsigned int world_height = 768;
 
 	const float red_sphere_mass		= 2.0f;
 	const float yellow_sphere_mass	= 2.0f;

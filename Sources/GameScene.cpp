@@ -79,7 +79,7 @@ bool GameScene::init()
 	mp_game_physics->initialise();
 
 	//_generateFoods();
-	//_generatePlayer();
+	_generatePlayer();
 
 	//_generateEnemies();
 	_parallaxCreate();
