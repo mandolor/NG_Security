@@ -58,6 +58,31 @@ namespace GameConstants
 };
 
 //---------------------------------------------------------------------
+class GlobalInterface
+{
+public:
+	static cocos2d::Vec2 getRandomizedPosition()
+	{
+		std::random_device rd;
+		std::mt19937 rng( rd() );
+
+		std::uniform_int_distribution<int> uni_width( 40, GameConstants::world_width - 40 );
+		std::uniform_int_distribution<int> uni_height( 40, GameConstants::world_height - 40 );
+
+		return cocos2d::Vec2( uni_width( rng ), uni_height( rng ) );
+	}
+
+	static bool getActionProbability()
+	{
+		std::random_device rd;
+		std::mt19937 rng( rd() );
+
+		std::uniform_int_distribution<int> probability( 0, 1 );
+		return probability( rng );
+	}
+};
+
+//---------------------------------------------------------------------
 class GlobalGameStates
 {
 public:
