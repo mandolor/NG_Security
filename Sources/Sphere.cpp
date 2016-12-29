@@ -128,12 +128,6 @@ void Sphere::collideWithObject( GameObject* const i_object )
 }
 
 //---------------------------------------------------------------------
-void Sphere::changeCollisionType( const ObjectCollisionType& i_type )
-{
-	m_object_collision_type = i_type;
-}
-
-//---------------------------------------------------------------------
 void Sphere::randomChangeSphereType()
 {
 	std::random_device rd;

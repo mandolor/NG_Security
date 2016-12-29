@@ -50,6 +50,9 @@ public:
 	void buildSecurityScenes();
 	void updateSecurityScenes();
 
+protected:
+	void _setUpSceneWithTargets( SceneRule* i_scene_rule );
+
 private:
 	cocos2d::Node* m_game_scene;
 	std::map<SecurityScene, SceneRule*> m_scene_rules;

@@ -155,7 +155,7 @@ xcopy "$(OutDir)..\*.dll" "$(OutDir)" /D /Y</Command>
     <ClCompile Include="..\Sources\GamePhysics.cpp" />
     <ClCompile Include="..\Sources\GameScene.cpp" />
     <ClCompile Include="..\Sources\GlobalSceneSensor.cpp" />
-    <ClCompile Include="..\Sources\SceneBuilder.cpp" />
+    <ClCompile Include="..\Sources\SceneDirector.cpp" />
     <ClCompile Include="..\Sources\Sphere.cpp" />
     <ClCompile Include="..\Sources\SphereContainer.cpp" />
     <ClCompile Include="..\Sources\SpriteCache.cpp" />
@@ -171,7 +171,7 @@ xcopy "$(OutDir)..\*.dll" "$(OutDir)" /D /Y</Command>
     <ClInclude Include="..\Sources\GamePhysics.h" />
     <ClInclude Include="..\Sources\GameScene.h" />
     <ClInclude Include="..\Sources\GlobalSceneSensor.h" />
-    <ClInclude Include="..\Sources\SceneBuilder.h" />
+    <ClInclude Include="..\Sources\SceneDirector.h" />
     <ClInclude Include="..\Sources\Sphere.h" />
     <ClInclude Include="..\Sources\SphereContainer.h" />
     <ClInclude Include="..\Sources\SpriteCache.h" />

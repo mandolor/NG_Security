@@ -37,9 +37,7 @@ private:
 	void _generateTargetSecurityObjects();
 	void _generateMainSecurityObject();
 	
-	void _correctionMapBorders( cocos2d::Vec2& i_camera_pos );
 	void _collidePlayer();
-
 	void _parallaxCreate();
 	//void _generateSecurityEnemies();
 	

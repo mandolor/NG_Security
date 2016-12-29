@@ -31,7 +31,7 @@
     <ClCompile Include="..\Sources\GlobalSceneSensor.cpp">
       <Filter>Core\Game Logic</Filter>
     </ClCompile>
-    <ClCompile Include="..\Sources\SceneBuilder.cpp">
+    <ClCompile Include="..\Sources\SceneDirector.cpp">
       <Filter>Core\Scene Builder</Filter>
     </ClCompile>
   </ItemGroup>
@@ -75,7 +75,7 @@
     <ClInclude Include="..\Sources\GlobalSceneSensor.h">
       <Filter>Core\Game Logic</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\SceneBuilder.h">
+    <ClInclude Include="..\Sources\SceneDirector.h">
       <Filter>Core\Scene Builder</Filter>
     </ClInclude>
   </ItemGroup>

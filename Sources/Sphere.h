@@ -20,8 +20,6 @@ public:
     virtual const float getCollisionRadius() const override;
 	virtual void collideWithObject( GameObject* const i_object ) override;
 
-	virtual void changeCollisionType( const ObjectCollisionType& i_type );
-
     virtual void randomChangeSphereType();
 	virtual void setTargetPoint( const cocos2d::Vec2& i_point );
 

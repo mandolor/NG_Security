@@ -1,8 +1,5 @@
-
 #include "GameScene.h"
 #include "AppMacros.h"
-#include "WinScreen.h"
-#include "FailScreen.h"
 #include "ui/CocosGUI.h"
 #include "cocostudio/CocoStudio.h"
 #include "Sphere.h"
@@ -10,7 +7,7 @@
 #include "SphereContainer.h"
 #include "GamePhysics.h"
 #include "GlobalSceneSensor.h"
-#include "SceneBuilder.h"
+#include "SceneDirector.h"
 
 #pragma comment(lib, "libcocos2d.lib")
 
@@ -114,9 +111,6 @@ void GameScene::_collidePlayer()
 	Sphere* p_player = mp_sphere_container->getPlayerSphere();
 	cocos2d::Vec2 mass_red_yellow = p_player->getMass();
 
-	// 	mp_label_red_count->setString( TO_STRING( mass_red_yellow.x ) );
-	// 	mp_label_yell_count->setString( TO_STRING( mass_red_yellow.y ) );
-
 	// 	if ( !mp_game_sensor->getClosestEnemy( p_player->getPosition() ) )
 	// 	{
 	// 		int mass = static_cast<GameObject*>( p_player )->getMass();
@@ -208,23 +202,6 @@ void GameScene::onTouchEnded( cocos2d::Touch* touch, cocos2d::Event* event )
 	}
 
 	m_touchMoved = false;
-}
-
-//---------------------------------------------------------------------
-void GameScene::_correctionMapBorders( cocos2d::Vec2& i_camera_pos )
-{
-	int x_border = designResolutionSize.width - GameConstants::world_width;
-	int y_border = designResolutionSize.height - GameConstants::world_height;
-	
-	if ( i_camera_pos.x > 0 )
-		i_camera_pos.x = 0;
-	else if ( i_camera_pos.x < x_border )
-		i_camera_pos.x = x_border;
-
-	if ( i_camera_pos.y > 0 )
-		i_camera_pos.y = 0;
-	else if ( i_camera_pos.y < y_border )
-		i_camera_pos.y = y_border;
 }
 
 //---------------------------------------------------------------------
