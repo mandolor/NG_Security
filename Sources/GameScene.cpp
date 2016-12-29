@@ -149,22 +149,6 @@ void GameScene::_parallaxCreate()
 }
 
 //---------------------------------------------------------------------
-// void GameScene::_parallaxProcess()
-// {
-// 	Vec2 pos = mp_sphere_container->getPlayerSphere()->getPosition();
-// 	float screen_size = Director::getInstance()->getVisibleSize().width;
-// 	
-// 	float x_start_scroll = screen_size / 2;
-// 	float x_end_scroll = GameConstants::world_width - x_start_scroll;
-// 	
-// 	if ( ( pos.x > x_start_scroll ) && ( pos.x < x_end_scroll ) )
-// 	{
-// 		float pos_x = pos.x - x_start_scroll;
-// 		mp_game_layer->setPositionX( -pos_x );
-// 	}
-// }
-
-//---------------------------------------------------------------------
 void GameScene::_generateMainSecurityObject()
 {
 	ObjectCollisionType type = ObjectCollisionType::FireSphere;
@@ -262,8 +246,6 @@ void GameScene::update( float dt )
 {
 	mp_game_physics->update();
 	mp_sphere_container->update();
-	
-	//_parallaxProcess();
 }
 
 //---------------------------------------------------------------------

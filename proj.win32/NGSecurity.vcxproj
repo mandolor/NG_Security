@@ -150,14 +150,10 @@ xcopy "$(OutDir)..\*.dll" "$(OutDir)" /D /Y</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Sources\2BytesScreen.cpp" />
     <ClCompile Include="..\Sources\AppDelegate.cpp" />
-    <ClCompile Include="..\Sources\AwebiaScreen.cpp" />
     <ClCompile Include="..\Sources\FailScreen.cpp" />
     <ClCompile Include="..\Sources\GamePhysics.cpp" />
     <ClCompile Include="..\Sources\GameScene.cpp" />
-    <ClCompile Include="..\Sources\LevelsScreen.cpp" />
-    <ClCompile Include="..\Sources\MainMenu.cpp" />
     <ClCompile Include="..\Sources\GlobalSceneSensor.cpp" />
     <ClCompile Include="..\Sources\SceneBuilder.cpp" />
     <ClCompile Include="..\Sources\Sphere.cpp" />
@@ -167,17 +163,13 @@ xcopy "$(OutDir)..\*.dll" "$(OutDir)" /D /Y</Command>
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Sources\2BytesScreen.h" />
     <ClInclude Include="..\Sources\AppMacros.h" />
     <ClInclude Include="..\Sources\AppDelegate.h" />
-    <ClInclude Include="..\Sources\AwebiaScreen.h" />
     <ClInclude Include="..\Sources\FailScreen.h" />
     <ClInclude Include="..\Sources\GameObject.h" />
     <ClInclude Include="..\Sources\GlobalGameStates.h" />
     <ClInclude Include="..\Sources\GamePhysics.h" />
     <ClInclude Include="..\Sources\GameScene.h" />
-    <ClInclude Include="..\Sources\LevelsScreen.h" />
-    <ClInclude Include="..\Sources\MainMenu.h" />
     <ClInclude Include="..\Sources\GlobalSceneSensor.h" />
     <ClInclude Include="..\Sources\SceneBuilder.h" />
     <ClInclude Include="..\Sources\Sphere.h" />

@@ -7,19 +7,7 @@
     <ClCompile Include="main.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\Sources\MainMenu.cpp">
-      <Filter>Screens\Menu</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Sources\2BytesScreen.cpp">
-      <Filter>Screens\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Sources\AwebiaScreen.cpp">
-      <Filter>Screens\Screens</Filter>
-    </ClCompile>
     <ClCompile Include="..\Sources\FailScreen.cpp">
-      <Filter>Screens\Screens</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Sources\LevelsScreen.cpp">
       <Filter>Screens\Screens</Filter>
     </ClCompile>
     <ClCompile Include="..\Sources\WinScreen.cpp">
@@ -57,19 +45,7 @@
     <ClInclude Include="main.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\Sources\MainMenu.h">
-      <Filter>Screens\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Sources\2BytesScreen.h">
-      <Filter>Screens\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Sources\AwebiaScreen.h">
-      <Filter>Screens\Screens</Filter>
-    </ClInclude>
     <ClInclude Include="..\Sources\FailScreen.h">
-      <Filter>Screens\Screens</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Sources\LevelsScreen.h">
       <Filter>Screens\Screens</Filter>
     </ClInclude>
     <ClInclude Include="..\Sources\WinScreen.h">

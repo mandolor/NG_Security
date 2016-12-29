@@ -1,6 +1,5 @@
 #include "WinScreen.h"
 #include "GameScene.h"
-#include "MainMenu.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 
@@ -67,14 +66,14 @@ bool WinScreen::init()
 	ui::Button* bttn_next = static_cast< ui::Button* >( rootNode->getChildByName( "bttn_next" ) );
 	bttn_next->addClickEventListener( next_callback );
 
-	auto more_callback = [] ( Ref* )
-	{
-		auto scene = MainMenu::createScene();
-		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
-	};
+// 	auto more_callback = [] ( Ref* )
+// 	{
+// 		auto scene = MainMenu::createScene();
+// 		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
+// 	};
 	
-	ui::Button* bttn_more = static_cast< ui::Button* >( rootNode->getChildByName( "bttn_more" ) );
-	bttn_more->addClickEventListener( more_callback );
+// 	ui::Button* bttn_more = static_cast< ui::Button* >( rootNode->getChildByName( "bttn_more" ) );
+// 	bttn_more->addClickEventListener( more_callback );
 	
     return true;
 }
