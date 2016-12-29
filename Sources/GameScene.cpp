@@ -27,7 +27,7 @@ namespace
 SphereContainer*		GameScene::mp_sphere_container = nullptr;
 GamePhysics*			GameScene::mp_game_physics = nullptr;
 GlobalSceneSensor*		GameScene::mp_game_sensor = nullptr;
-SceneBuilder*			GameScene::mp_scene_builder	= nullptr;
+SceneDirector*			GameScene::mp_scene_director = nullptr;
 
 //---------------------------------------------------------------------
 GameScene::~GameScene()
@@ -64,7 +64,7 @@ bool GameScene::init()
 	mp_sphere_container = new SphereContainer;
 	mp_game_physics = new GamePhysics( mp_sphere_container );
 	mp_game_sensor = new GlobalSceneSensor( mp_sphere_container );
-	mp_scene_builder = new SceneBuilder( mp_game_layer );
+	mp_scene_director = new SceneDirector( mp_game_layer );
 
 	auto touchListener = EventListenerTouchOneByOne::create();
 	touchListener->setSwallowTouches( true );

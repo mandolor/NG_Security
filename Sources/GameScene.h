@@ -8,7 +8,7 @@
 class GlobalSceneSensor;
 class SphereContainer;
 class GamePhysics;
-class SceneBuilder;
+class SceneDirector;
 
 //---------------------------------------------------------------------
 class GameScene : public cocos2d::LayerColor
@@ -59,7 +59,7 @@ private:
 	static SphereContainer*			mp_sphere_container;
 	static GamePhysics*				mp_game_physics;
 	static GlobalSceneSensor*		mp_game_sensor;
-	static SceneBuilder*			mp_scene_builder;
+	static SceneDirector*			mp_scene_director;
 };
 
 #endif // __GAME_SCENE_H__

@@ -19,7 +19,7 @@ enum class SecurityScene
 };
 
 //---------------------------------------------------------------------
-class Rule
+class SceneRule
 {
 public:
 	cocos2d::Vec2							m_main_object_position;
@@ -32,10 +32,23 @@ class SceneBuilder
 {
 public:
 	SceneBuilder( cocos2d::Node* i_scene ) { m_game_scene = i_scene; };
-	virtual void buildScene( const SecurityScene& i_scene, const Rule& i_rule );
+	virtual void buildSceneByRule( const SecurityScene& i_scene, SceneRule* i_rule );
 
 private:
 	cocos2d::Node* m_game_scene;
+	std::map<SecurityScene, SceneRule*> m_scene_rules;
+};
+
+//---------------------------------------------------------------------
+class SceneDirector
+{
+public:
+	SceneDirector( cocos2d::Node* i_scene );
+	void buildSecurityScenes();
+	void updateSecurityScenes();
+
+private:
+	SceneBuilder* m_scene_builder;
 };
 
 #endif
