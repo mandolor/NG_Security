@@ -7,6 +7,11 @@
 #include "cocostudio/CocoStudio.h"
 #include "Sphere.h"
 
+#include "SphereContainer.h"
+#include "GamePhysics.h"
+#include "GlobalSceneSensor.h"
+#include "SceneBuilder.h"
+
 #pragma comment(lib, "libcocos2d.lib")
 
 USING_NS_CC;
@@ -19,9 +24,10 @@ namespace
 	const unsigned int PARALLAX_LAYERS_COUNT		= 6;
 }
 
-SphereContainer*		GameScene::mp_sphere_container	= nullptr;
-GamePhysics*			GameScene::mp_game_physics		= nullptr;
-GlobalSceneSensor*		GameScene::mp_game_sensor		= nullptr;
+SphereContainer*		GameScene::mp_sphere_container = nullptr;
+GamePhysics*			GameScene::mp_game_physics = nullptr;
+GlobalSceneSensor*		GameScene::mp_game_sensor = nullptr;
+SceneBuilder*			GameScene::mp_scene_builder	= nullptr;
 
 //---------------------------------------------------------------------
 GameScene::~GameScene()
@@ -49,25 +55,17 @@ bool GameScene::init()
 
 	float delta_width = designResolutionSize.width - Director::getInstance()->getVisibleSize().width;
 	
-	mp_sphere_container = new SphereContainer;
-	mp_game_physics = new GamePhysics( mp_sphere_container );
-	mp_game_sensor = new GlobalSceneSensor( mp_sphere_container );
-
 	auto sceneNode = CSLoader::createNode( "scenes/GameScene.csb" );
 	addChild( sceneNode );
 	
 	auto rootNode = sceneNode->getChildByName( "root" );
 	mp_game_layer = static_cast< cocos2d::Node* >( rootNode->getChildByName( "game_layer" ) );
-
-// 	auto ux_node		= static_cast< cocos2d::Node* >( rootNode->getChildByName( "ux_node" ) );
-// 	auto label_yellow	= static_cast< cocos2d::ui::Text* >( ux_node->getChildByName( "label_yellow" ) );
-// 
-// 	mp_label_red_count	= static_cast< cocos2d::ui::Text* >( ux_node->getChildByName( "label_red_count" ) );
-// 	mp_label_yell_count = static_cast< cocos2d::ui::Text* >( ux_node->getChildByName( "label_yellow_count" ) );
-// 	
-// 	label_yellow->setPositionX( label_yellow->getPositionX() - delta_width );
-// 	mp_label_yell_count->setPositionX( mp_label_yell_count->getPositionX() - delta_width );
 	
+	mp_sphere_container = new SphereContainer;
+	mp_game_physics = new GamePhysics( mp_sphere_container );
+	mp_game_sensor = new GlobalSceneSensor( mp_sphere_container );
+	mp_scene_builder = new SceneBuilder( mp_game_layer );
+
 	auto touchListener = EventListenerTouchOneByOne::create();
 	touchListener->setSwallowTouches( true );
 
@@ -78,16 +76,55 @@ bool GameScene::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority( touchListener, this );
 	mp_game_physics->initialise();
 
-	//_generateFoods();
-	_generatePlayer();
+	_generateTargetSecurityObjects();
+	_generateMainSecurityObject();
 
-	//_generateEnemies();
+	//_generateSecurityEnemies();
 	_parallaxCreate();
 	
 	mp_sphere_container->showAll();
 	
 	scheduleUpdate();
 	return true;
+}
+
+//---------------------------------------------------------------------
+void GameScene::_generateTargetSecurityObjects()
+{
+	for ( unsigned int index = 0; index < FOOD_OBJECT_COUNT; ++index )
+	{
+		ObjectCollisionType type = ObjectCollisionType::RedSphere;
+
+		int random_number = rand() % 10;
+
+		if ( random_number < 5 )
+			type = ObjectCollisionType::YellowSphere;
+
+		int index_type = static_cast< int > ( type );
+		Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[index_type] );
+
+		p_sphere->attachTo( mp_game_layer, SPHERE_OBJECT_ORDER );
+		mp_sphere_container->addPhysicsObject( p_sphere );
+	}
+}
+
+//---------------------------------------------------------------------
+void GameScene::_collidePlayer()
+{
+	Sphere* p_player = mp_sphere_container->getPlayerSphere();
+	cocos2d::Vec2 mass_red_yellow = p_player->getMass();
+
+	// 	mp_label_red_count->setString( TO_STRING( mass_red_yellow.x ) );
+	// 	mp_label_yell_count->setString( TO_STRING( mass_red_yellow.y ) );
+
+	// 	if ( !mp_game_sensor->getClosestEnemy( p_player->getPosition() ) )
+	// 	{
+	// 		int mass = static_cast<GameObject*>( p_player )->getMass();
+	// 		mass -= GameConstants::base_mass;
+	// 	
+	// 		auto scene = WinScreen::createScene( mass );
+	// 		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
+	// 	}
 }
 
 //---------------------------------------------------------------------
@@ -128,53 +165,7 @@ void GameScene::_parallaxCreate()
 // }
 
 //---------------------------------------------------------------------
-void GameScene::_generateFoods()
-{
-	for ( unsigned int index = 0; index < FOOD_OBJECT_COUNT; ++index )
-	{
-		ObjectCollisionType type = ObjectCollisionType::RedSphere;
-
-		int random_number = rand() % 10;
-
-		if ( random_number < 5 )
-			type = ObjectCollisionType::YellowSphere;
-
-		int index_type = static_cast<int> ( type );
-		Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[ index_type ] );
-
-		p_sphere->attachTo( mp_game_layer, SPHERE_OBJECT_ORDER );
-		mp_sphere_container->addPhysicsObject( p_sphere );
-	}
-}
-
-//---------------------------------------------------------------------
-void GameScene::_collidePlayer()
-{
-	Sphere* p_player = mp_sphere_container->getPlayerSphere();
-	cocos2d::Vec2 mass_red_yellow = p_player->getMass();
-	
-	mp_label_red_count->setString( TO_STRING( mass_red_yellow.x ) );
-	mp_label_yell_count->setString( TO_STRING( mass_red_yellow.y ) );
-	
-	if ( !mp_game_sensor->getClosestEnemy( p_player->getPosition() ) )
-	{
-		int mass = static_cast<GameObject*>( p_player )->getMass();
-		mass -= GameConstants::base_mass;
-	
-		auto scene = WinScreen::createScene( mass );
-		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
-	}
-}
-
-//---------------------------------------------------------------------
-// void GameScene::_killedPlayer()
-// {
-// 	auto scene = FailScreen::createScene();
-// 	Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
-// }
-
-//---------------------------------------------------------------------
-void GameScene::_generatePlayer()
+void GameScene::_generateMainSecurityObject()
 {
 	ObjectCollisionType type = ObjectCollisionType::FireSphere;
 	int index_type = static_cast<int> ( type );
@@ -190,7 +181,7 @@ void GameScene::_generatePlayer()
 }
 
 //---------------------------------------------------------------------
-// void GameScene::_generateEnemies()
+// void GameScene::_generateSecurityEnemies()
 // {
 // 	int start_index = static_cast<int> ( ObjectCollisionType::BlackSphere );
 // 	int end_index = static_cast<int> ( ObjectCollisionType::TransformSphere );

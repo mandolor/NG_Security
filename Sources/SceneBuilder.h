@@ -1,25 +1,41 @@
 #ifndef SCENE_BUILDER_H
 #define SCENE_BUILDER_H
 
+#include "cocos2d.h"
+
+//---------------------------------------------------------------------
+enum class TargetType
+{
+	YellowObject,
+	RedObject
+};
+
+//---------------------------------------------------------------------
+enum class SecurityScene
+{
+	TestScene1,
+	TestScene2,
+	TestScene3
+};
+
 //---------------------------------------------------------------------
 class Rule
 {
 public:
-
+	cocos2d::Vec2							m_main_object_position;
+	std::map<int, cocos2d::Vec2>			m_target_object_positions;
+	std::map<int, TargetType>				m_interaction_order;
 };
 
 //---------------------------------------------------------------------
-class Builder
+class SceneBuilder
 {
 public:
-	virtual void buildScenePartition( const Rule& i_rule ) = 0;
-};
+	SceneBuilder( cocos2d::Node* i_scene ) { m_game_scene = i_scene; };
+	virtual void buildScene( const SecurityScene& i_scene, const Rule& i_rule );
 
-//---------------------------------------------------------------------
-class Director
-{
-public:
-	void buildScene( const Builder& i_builder );
+private:
+	cocos2d::Node* m_game_scene;
 };
 
 #endif

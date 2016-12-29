@@ -40,33 +40,6 @@ const std::string g_object_collision_sprite[] = { "",
 };
 
 //---------------------------------------------------------------------
-enum class SecurityScene
-{
-	TestScene1,
-	TestScene2,
-	TestScene3
-};
-
-//---------------------------------------------------------------------
-struct SecurityObjectConfiguration
-{
-	unsigned int id;
-	float x;
-	float y;
-	cocos2d::Color3B color;
-};
-
-//---------------------------------------------------------------------
-struct SecuritySetupConfiguration
-{
-	std::vector<SecurityObjectConfiguration*> object_configurations;
-	std::vector<int> object_ids;
-};
-
-//---------------------------------------------------------------------
-const std::map<SecurityScene, SecuritySetupConfiguration*> security_levels;
-
-//---------------------------------------------------------------------
 const int g_object_collision_radius[] = { 0, 26, 26, 38, 38, 38, 38, 38, 30 };
 
 //---------------------------------------------------------------------

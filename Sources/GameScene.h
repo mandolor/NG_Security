@@ -2,12 +2,13 @@
 #define __GAME_SCENE_H__
 #define DEBUG_DRAW
 
-#include "SphereContainer.h"
-#include "GamePhysics.h"
-#include "GlobalSceneSensor.h"
-
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
+
+class GlobalSceneSensor;
+class SphereContainer;
+class GamePhysics;
+class SceneBuilder;
 
 //---------------------------------------------------------------------
 class GameScene : public cocos2d::LayerColor
@@ -33,16 +34,14 @@ public:
 	virtual ~GameScene();
 
 private:
-	void _generateFoods();
-	void _generatePlayer();
+	void _generateTargetSecurityObjects();
+	void _generateMainSecurityObject();
 	
-	//void _generateEnemies();
+	//void _generateSecurityEnemies();
 	
 	void _correctionMapBorders( cocos2d::Vec2& i_camera_pos );
 	void _collidePlayer();
 
-	//void _killedPlayer();
-	
 	void _parallaxCreate();
 	//void _parallaxProcess();
 	
@@ -60,6 +59,7 @@ private:
 	static SphereContainer*			mp_sphere_container;
 	static GamePhysics*				mp_game_physics;
 	static GlobalSceneSensor*		mp_game_sensor;
+	static SceneBuilder*			mp_scene_builder;
 };
 
 #endif // __GAME_SCENE_H__
