@@ -51,6 +51,12 @@ void SceneDirector::buildSecurityScenes()
 //---------------------------------------------------------------------
 void SceneDirector::updateSecurityScenes()
 {
+	static SecurityScene scene_in_process = SecurityScene::TestScene1;
+	static bool scene_passed = false;
+
+
+
+
 
 }
 
