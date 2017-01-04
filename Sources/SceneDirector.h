@@ -25,8 +25,8 @@ public:
 	void setTargetInformation( const cocos2d::Vec2& i_position, const TargetType& i_type );
 
 private:
-	cocos2d::Vec2 m_target_position;
-	TargetType m_target_type;
+	cocos2d::Vec2							m_target_position;
+	TargetType								m_target_type;
 };
 
 //---------------------------------------------------------------------
@@ -54,8 +54,8 @@ protected:
 	void _setUpSceneWithTargets( SceneRule* i_scene_rule );
 
 private:
-	cocos2d::Node* m_game_scene;
-	std::map<SecurityScene, SceneRule*> m_scene_rules;
+	cocos2d::Node*							m_game_scene;
+	std::map<SecurityScene, SceneRule*>		m_scene_rules;
 };
 
 #endif
