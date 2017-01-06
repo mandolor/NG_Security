@@ -8,19 +8,13 @@
 #include "GamePhysics.h"
 #include "GlobalSceneSensor.h"
 #include "SceneDirector.h"
+#include "GlobalGameStates.h"
 
 #pragma comment(lib, "libcocos2d.lib")
 
 USING_NS_CC;
 
 //---------------------------------------------------------------------
-namespace
-{
-	static const unsigned int FOOD_OBJECT_COUNT		= 30;
-	static const unsigned int SPHERE_OBJECT_ORDER	= 10;
-	const unsigned int PARALLAX_LAYERS_COUNT		= 6;
-}
-
 SphereContainer*		GameScene::mp_sphere_container = nullptr;
 GamePhysics*			GameScene::mp_game_physics = nullptr;
 GlobalSceneSensor*		GameScene::mp_game_sensor = nullptr;
@@ -73,8 +67,11 @@ bool GameScene::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority( touchListener, this );
 	mp_game_physics->initialise();
 
-	_generateTargetSecurityObjects();
+	// SceneDirector creation
+	mp_scene_director->buildSecurityScenes();
+
 	_generateMainSecurityObject();
+	_generateTargetSecurityObjects();
 
 	//_generateSecurityEnemies();
 	_parallaxCreate();
@@ -88,21 +85,44 @@ bool GameScene::init()
 //---------------------------------------------------------------------
 void GameScene::_generateTargetSecurityObjects()
 {
-	for ( unsigned int index = 0; index < FOOD_OBJECT_COUNT; ++index )
+	for ( unsigned int index = 0; index < GlobalStates::target_objects_count; ++index )
 	{
-		ObjectCollisionType type = ObjectCollisionType::RedSphere;
 
+
+
+		ObjectCollisionType type = ObjectCollisionType::RedSphere;
 		int random_number = rand() % 10;
 
 		if ( random_number < 5 )
 			type = ObjectCollisionType::YellowSphere;
 
+		
+		
+		
+		
+		
 		int index_type = static_cast< int > ( type );
 		Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[index_type] );
 
-		p_sphere->attachTo( mp_game_layer, SPHERE_OBJECT_ORDER );
+		p_sphere->attachTo( mp_game_layer, GlobalStates::object_layer_order );
 		mp_sphere_container->addPhysicsObject( p_sphere );
 	}
+}
+
+//---------------------------------------------------------------------
+void GameScene::_generateMainSecurityObject()
+{
+	ObjectCollisionType type = ObjectCollisionType::FireSphere;
+	int index_type = static_cast< int > ( type );
+
+	Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[index_type], true );
+	p_sphere->attachTo( mp_game_layer, GlobalStates::object_layer_order );
+
+	mp_sphere_container->addPhysicsObject( p_sphere );
+	p_sphere->setPosition( cocos2d::Vec2( 100, 100 ) );
+
+	p_sphere->setCollideCallback( std::bind( &GameScene::_collidePlayer, this ) );
+	//p_sphere->setKilledCallback( std::bind( &GameScene::_killedPlayer, this ) );
 }
 
 //---------------------------------------------------------------------
@@ -127,7 +147,7 @@ void GameScene::_parallaxCreate()
 	float screen_size = Director::getInstance()->getVisibleSize().width;
 	m_parallax = ParallaxNode::create();
 
-	for ( int i = 1; i <= PARALLAX_LAYERS_COUNT; ++i )
+	for ( int i = 1; i <= GlobalStates::parallax_layer_order; ++i )
 	{
 		std::string layer_name = "layer_" + TO_STRING( i );
 		Node* p_layer = static_cast< cocos2d::Node* >( mp_game_layer->getChildByName( layer_name ) );
@@ -136,26 +156,10 @@ void GameScene::_parallaxCreate()
 		float x_ratio = ( width - screen_size ) / (GameConstants::world_width - screen_size );
 	
 		p_layer->removeFromParent();
-		m_parallax->addChild( p_layer, PARALLAX_LAYERS_COUNT - i, Vec2( x_ratio, 0 ), Vec2::ZERO );
+		m_parallax->addChild( p_layer, GlobalStates::parallax_layer_order - i, Vec2( x_ratio, 0 ), Vec2::ZERO );
 	}
 
 	mp_game_layer->addChild( m_parallax );
-}
-
-//---------------------------------------------------------------------
-void GameScene::_generateMainSecurityObject()
-{
-	ObjectCollisionType type = ObjectCollisionType::FireSphere;
-	int index_type = static_cast<int> ( type );
-	
-	Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[ index_type ], true );
-	p_sphere->attachTo( mp_game_layer, SPHERE_OBJECT_ORDER );
-
-	mp_sphere_container->addPhysicsObject( p_sphere );
-	p_sphere->setPosition( cocos2d::Vec2( 100, 100 ) );
-	
-	p_sphere->setCollideCallback( std::bind( &GameScene::_collidePlayer, this ) );
-	//p_sphere->setKilledCallback( std::bind( &GameScene::_killedPlayer, this ) );
 }
 
 //---------------------------------------------------------------------
@@ -221,6 +225,7 @@ void GameScene::draw( cocos2d::Renderer* renderer, const cocos2d::Mat4& transfor
 //---------------------------------------------------------------------
 void GameScene::update( float dt )
 {
+	mp_scene_director->updateSecurityScenes();
 	mp_game_physics->update();
 	mp_sphere_container->update();
 }

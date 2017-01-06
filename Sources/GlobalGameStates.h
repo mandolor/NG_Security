@@ -5,6 +5,13 @@
 #include "cocos2d.h"
 #include <map>
 
+namespace GlobalStates
+{
+	const unsigned int	target_objects_count = 30;
+	const unsigned int	object_layer_order = 10;
+	const unsigned int	parallax_layer_order = 6;
+}
+
 //---------------------------------------------------------------------
 enum class SphereLogicState
 {

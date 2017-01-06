@@ -63,9 +63,7 @@ void SceneDirector::updateSecurityScenes()
 //---------------------------------------------------------------------
 void SceneDirector::_setUpSceneWithTargets( SceneRule* i_scene_rule )
 {
-	const unsigned int targets_count = 10;
-
-	for ( int index = 0; index < targets_count; ++index )
+	for ( int index = 0; index < GlobalStates::target_objects_count; ++index )
 	{
 		cocos2d::Vec2 target_position = GlobalInterface::getRandomizedPosition();
 		TargetType needed_color = GlobalInterface::getActionProbability() == 0 ? TargetType::YellowObject : TargetType::RedObject;
