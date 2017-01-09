@@ -30,38 +30,26 @@ void SceneDirector::buildSecurityScenes()
 	SceneRule* p_scene_rule_1 = new SceneRule;
 	p_scene_rule_1->setMainObjectPosition( cocos2d::Vec2( 200.0f, 200.0f ) );
 
-	_setUpSceneWithTargets( p_scene_rule_1 );
+	_setUpSceneWithSecurityTargets( p_scene_rule_1 );
 	m_scene_rules.insert( std::make_pair( SecurityScene::TestScene1, p_scene_rule_1 ) );
 
 	//---------------------------------------------------------------------
 	SceneRule* p_scene_rule_2 = new SceneRule;
 	p_scene_rule_2->setMainObjectPosition( cocos2d::Vec2( 400.0f, 200.0f ) );
 
-	_setUpSceneWithTargets( p_scene_rule_2 );
+	_setUpSceneWithSecurityTargets( p_scene_rule_2 );
 	m_scene_rules.insert( std::make_pair( SecurityScene::TestScene2, p_scene_rule_2 ) );
 
 	//---------------------------------------------------------------------
 	SceneRule* p_scene_rule_3 = new SceneRule;
 	p_scene_rule_3->setMainObjectPosition( cocos2d::Vec2( 400.0f, 400.0f ) );
 
-	_setUpSceneWithTargets( p_scene_rule_3 );
+	_setUpSceneWithSecurityTargets( p_scene_rule_3 );
 	m_scene_rules.insert( std::make_pair( SecurityScene::TestScene3, p_scene_rule_3 ) );
 }
 
 //---------------------------------------------------------------------
-void SceneDirector::updateSecurityScenes()
-{
-	static SecurityScene scene_in_process = SecurityScene::TestScene1;
-	static bool scene_passed = false;
-
-
-
-
-
-}
-
-//---------------------------------------------------------------------
-void SceneDirector::_setUpSceneWithTargets( SceneRule* i_scene_rule )
+void SceneDirector::_setUpSceneWithSecurityTargets( SceneRule* i_scene_rule )
 {
 	for ( int index = 0; index < GlobalStates::target_objects_count; ++index )
 	{
@@ -74,5 +62,6 @@ void SceneDirector::_setUpSceneWithTargets( SceneRule* i_scene_rule )
 //---------------------------------------------------------------------
 void TargetInformation::setTargetInformation( const cocos2d::Vec2& i_position, const TargetType& i_type )
 {
-
+	m_target_position = i_position;
+	m_target_type = i_type;
 }

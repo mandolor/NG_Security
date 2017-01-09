@@ -48,10 +48,9 @@ class SceneDirector
 public:
 	SceneDirector( cocos2d::Node* i_scene );
 	void buildSecurityScenes();
-	void updateSecurityScenes();
 
 protected:
-	void _setUpSceneWithTargets( SceneRule* i_scene_rule );
+	void _setUpSceneWithSecurityTargets( SceneRule* i_scene_rule );
 
 private:
 	cocos2d::Node*							m_game_scene;
