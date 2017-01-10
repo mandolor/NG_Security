@@ -35,7 +35,7 @@ public:
 
 private:
 	void _generateTargetSecurityObjects();
-	void _generateMainSecurityObject();
+	void _generateSecurityObjects();
 	
 	void _collidePlayer();
 	void _parallaxCreate();

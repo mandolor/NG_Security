@@ -14,7 +14,7 @@ public:
 		, m_action_finished( false )
 		, m_is_player( false )
 		, m_waiting_for_next_update( false )
-		, m_object_collision_type( ObjectCollisionType::NoCollision )
+		, m_object_collision_type( SecurityTargetType::NoCollision )
 	{}
 
 	virtual ~GameObject() {};
@@ -40,7 +40,7 @@ public:
 	unsigned int getMass() const	{ return m_mass; }
 	virtual void killed()			{ m_killed = true; }
 
-	ObjectCollisionType getObjectCollisionType() const { return m_object_collision_type; }
+	SecurityTargetType getObjectCollisionType() const { return m_object_collision_type; }
 
 protected:
 	unsigned int							m_mass;
@@ -50,7 +50,7 @@ protected:
 	bool									m_is_player;
 
 	bool									m_waiting_for_next_update;
-	ObjectCollisionType						m_object_collision_type;
+	SecurityTargetType						m_object_collision_type;
 
 };
 

@@ -55,7 +55,7 @@ bool GameScene::init()
 	mp_sphere_container = new SphereContainer;
 	mp_game_physics = new GamePhysics( mp_sphere_container );
 	mp_game_sensor = new GlobalSceneSensor( mp_sphere_container );
-	mp_scene_director = new SceneDirector( mp_game_layer );
+	mp_scene_director = new SceneDirector;
 
 	auto touchListener = EventListenerTouchOneByOne::create();
 	touchListener->setSwallowTouches( true );
@@ -67,11 +67,8 @@ bool GameScene::init()
 	_eventDispatcher->addEventListenerWithSceneGraphPriority( touchListener, this );
 	mp_game_physics->initialise();
 
-	// SceneDirector creation
 	mp_scene_director->buildSecurityScenes();
-
-	_generateMainSecurityObject();
-	_generateTargetSecurityObjects();
+	_generateSecurityObjects();
 
 	_parallaxCreate();	
 	mp_sphere_container->showAll();
@@ -85,7 +82,6 @@ void GameScene::update( float dt )
 {
 	mp_game_physics->update();
 	mp_sphere_container->update();
-	//static SecurityScene scene_in_process = SecurityScene::TestScene1;
 }
 
 //---------------------------------------------------------------------
@@ -95,49 +91,39 @@ GlobalSceneSensor* GameScene::getGlobalGameSensor()
 }
 
 //---------------------------------------------------------------------
-void GameScene::_generateMainSecurityObject()
+void GameScene::_generateSecurityObjects()
 {
+	// creating main security object
+	SecurityScene scene_in_process = SecurityScene::TestScene1;
+	SceneRule* p_scene_rule = mp_scene_director->getSecuritySceneRule( scene_in_process );
 
+	cocos2d::Vec2 main_security_object_position = p_scene_rule->getMainSecurityObjectPosition();
 
-	ObjectCollisionType type = ObjectCollisionType::FireSphere;
-	int index_type = static_cast< int > ( type );
-
-
-
-
-	Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[index_type], true );
+	int index_type = static_cast< int > ( SecurityTargetType::FireSphere );
+	Sphere* p_sphere = mp_sphere_container->generate( SecurityTargetType::FireSphere, g_object_collision_sprite[index_type], true );
 	p_sphere->attachTo( mp_game_layer, GlobalStates::object_layer_order );
 
 	mp_sphere_container->addPhysicsObject( p_sphere );
-	p_sphere->setPosition( cocos2d::Vec2( 100, 100 ) );
+	p_sphere->setPosition( main_security_object_position );
 
 	p_sphere->setCollideCallback( std::bind( &GameScene::_collidePlayer, this ) );
-}
 
-//---------------------------------------------------------------------
-void GameScene::_generateTargetSecurityObjects()
-{
+	// creating security objects
+	std::map<int, TargetInformation*> p_security_objects = p_scene_rule->getSecurityTargets();
+
 	for ( unsigned int index = 0; index < GlobalStates::target_objects_count; ++index )
 	{
+		TargetInformation* p_security_target_information = p_security_objects.at( index );
+		SecurityTargetType security_object_type = p_security_target_information->getTargetType();
+		cocos2d::Vec2 security_object_position = p_security_target_information->getTargetPosition();
 
-
-
-		ObjectCollisionType type = ObjectCollisionType::RedSphere;
-		int random_number = rand() % 10;
-
-		if ( random_number < 5 )
-			type = ObjectCollisionType::YellowSphere;
-
-		
-		
-		
-		
-		
-		int index_type = static_cast< int > ( type );
-		Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[index_type] );
+		int index_type = static_cast< int > ( security_object_type );
+		Sphere* p_sphere = mp_sphere_container->generate( security_object_type, g_object_collision_sprite[index_type] );
 
 		p_sphere->attachTo( mp_game_layer, GlobalStates::object_layer_order );
 		mp_sphere_container->addPhysicsObject( p_sphere );
+
+		p_sphere->setPosition( security_object_position );
 	}
 }
 

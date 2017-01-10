@@ -37,7 +37,7 @@ public:
 	
 protected:
 	friend class SphereContainer;
-    void _initialise( ObjectCollisionType i_type, cocos2d::Node* ip_sprite );
+    void _initialise( SecurityTargetType i_type, cocos2d::Node* ip_sprite );
 
     Sphere();
 	~Sphere() {};

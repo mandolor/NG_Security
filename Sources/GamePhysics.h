@@ -2,7 +2,7 @@
 #define COLLISIONS_H
 
 class SphereContainer;
-enum class ObjectCollisionType;
+enum class SecurityTargetType;
 
 //---------------------------------------------------------------------
 class GamePhysics
@@ -17,7 +17,7 @@ public:
 protected:
 	void _initCollisionsList();
 	void _fillCollisionsList();
-	bool _checkCollisionConflicts( const ObjectCollisionType& i_first_collision, const ObjectCollisionType& i_second_collision );
+	bool _checkCollisionConflicts( const SecurityTargetType& i_first_collision, const SecurityTargetType& i_second_collision );
 	
 private:
 	GamePhysics( const GamePhysics& ) {};

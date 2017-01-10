@@ -70,7 +70,7 @@ const std::vector<Sphere*>& SphereContainer::getSphereCollection() const
 }
 
 //---------------------------------------------------------------------
-Sphere* SphereContainer::generate( const ObjectCollisionType& i_coll_type, std::string i_sprite_path, bool is_player )
+Sphere* SphereContainer::generate( const SecurityTargetType& i_coll_type, std::string i_sprite_path, bool is_player )
 {
 	cocos2d::FileUtils* p_file_utils = cocos2d::FileUtils::getInstance();
 	std::string file_ext = p_file_utils->getFileExtension( i_sprite_path );
@@ -94,7 +94,7 @@ Sphere* SphereContainer::generate( const ObjectCollisionType& i_coll_type, std::
 }
 
 //---------------------------------------------------------------------
-Sphere* SphereContainer::generate( const ObjectCollisionType& i_coll_type, cocos2d::Node* ip_sprite, bool is_player )
+Sphere* SphereContainer::generate( const SecurityTargetType& i_coll_type, cocos2d::Node* ip_sprite, bool is_player )
 {
 	Sphere*	p_sphere = new Sphere;
 	p_sphere->_initialise( i_coll_type, ip_sprite );

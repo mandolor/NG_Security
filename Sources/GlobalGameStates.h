@@ -21,7 +21,7 @@ enum class SphereLogicState
 };
 
 //---------------------------------------------------------------------
-enum class ObjectCollisionType
+enum class SecurityTargetType
 {
 	NoCollision,
 	RedSphere,

@@ -6,7 +6,7 @@
 //---------------------------------------------------------------------
 namespace
 {
-	typedef std::map<ObjectCollisionType, std::vector<ObjectCollisionType>> CollisionList;
+	typedef std::map<SecurityTargetType, std::vector<SecurityTargetType>> CollisionList;
 	CollisionList define_collisitions_list;
 }
 
@@ -20,69 +20,69 @@ void GamePhysics::initialise()
 //---------------------------------------------------------------------
 void GamePhysics::_initCollisionsList()
 {
-	define_collisitions_list.insert( make_pair( ObjectCollisionType::BlackSphere, std::vector<ObjectCollisionType>() ) );
+	define_collisitions_list.insert( make_pair( SecurityTargetType::BlackSphere, std::vector<SecurityTargetType>() ) );
 }
 
 //---------------------------------------------------------------------
 void GamePhysics::_fillCollisionsList()
 {
-	define_collisitions_list[ObjectCollisionType::RedSphere].push_back( ObjectCollisionType::NoCollision );
-	define_collisitions_list[ObjectCollisionType::YellowSphere].push_back( ObjectCollisionType::NoCollision );
+	define_collisitions_list[SecurityTargetType::RedSphere].push_back( SecurityTargetType::NoCollision );
+	define_collisitions_list[SecurityTargetType::YellowSphere].push_back( SecurityTargetType::NoCollision );
 
-	define_collisitions_list[ObjectCollisionType::BlackSphere].push_back( ObjectCollisionType::RedSphere );
-	define_collisitions_list[ObjectCollisionType::BlackSphere].push_back( ObjectCollisionType::YellowSphere );
+	define_collisitions_list[SecurityTargetType::BlackSphere].push_back( SecurityTargetType::RedSphere );
+	define_collisitions_list[SecurityTargetType::BlackSphere].push_back( SecurityTargetType::YellowSphere );
 
-	define_collisitions_list[ObjectCollisionType::FireSphere].push_back( ObjectCollisionType::RedSphere );
-	define_collisitions_list[ObjectCollisionType::FireSphere].push_back( ObjectCollisionType::YellowSphere );
+	define_collisitions_list[SecurityTargetType::FireSphere].push_back( SecurityTargetType::RedSphere );
+	define_collisitions_list[SecurityTargetType::FireSphere].push_back( SecurityTargetType::YellowSphere );
 
-	define_collisitions_list[ObjectCollisionType::WaterSphere].push_back( ObjectCollisionType::RedSphere );
-	define_collisitions_list[ObjectCollisionType::WaterSphere].push_back( ObjectCollisionType::YellowSphere );
+	define_collisitions_list[SecurityTargetType::WaterSphere].push_back( SecurityTargetType::RedSphere );
+	define_collisitions_list[SecurityTargetType::WaterSphere].push_back( SecurityTargetType::YellowSphere );
 
-	define_collisitions_list[ObjectCollisionType::AirSphere].push_back( ObjectCollisionType::RedSphere );
-	define_collisitions_list[ObjectCollisionType::AirSphere].push_back( ObjectCollisionType::YellowSphere );
+	define_collisitions_list[SecurityTargetType::AirSphere].push_back( SecurityTargetType::RedSphere );
+	define_collisitions_list[SecurityTargetType::AirSphere].push_back( SecurityTargetType::YellowSphere );
 
-	define_collisitions_list[ObjectCollisionType::StoneSphere].push_back( ObjectCollisionType::RedSphere );
-	define_collisitions_list[ObjectCollisionType::StoneSphere].push_back( ObjectCollisionType::YellowSphere );
+	define_collisitions_list[SecurityTargetType::StoneSphere].push_back( SecurityTargetType::RedSphere );
+	define_collisitions_list[SecurityTargetType::StoneSphere].push_back( SecurityTargetType::YellowSphere );
 
 	//--------------------------------------------------------------------
 	// sphere collision lists
 	//--------------------------------------------------------------------
-	define_collisitions_list[ObjectCollisionType::BlackSphere].push_back( ObjectCollisionType::AirSphere );
-	define_collisitions_list[ObjectCollisionType::BlackSphere].push_back( ObjectCollisionType::WaterSphere );
-	define_collisitions_list[ObjectCollisionType::BlackSphere].push_back( ObjectCollisionType::FireSphere );
-	define_collisitions_list[ObjectCollisionType::BlackSphere].push_back( ObjectCollisionType::StoneSphere );
-	define_collisitions_list[ObjectCollisionType::BlackSphere].push_back( ObjectCollisionType::BlackSphere );
+	define_collisitions_list[SecurityTargetType::BlackSphere].push_back( SecurityTargetType::AirSphere );
+	define_collisitions_list[SecurityTargetType::BlackSphere].push_back( SecurityTargetType::WaterSphere );
+	define_collisitions_list[SecurityTargetType::BlackSphere].push_back( SecurityTargetType::FireSphere );
+	define_collisitions_list[SecurityTargetType::BlackSphere].push_back( SecurityTargetType::StoneSphere );
+	define_collisitions_list[SecurityTargetType::BlackSphere].push_back( SecurityTargetType::BlackSphere );
 
-	define_collisitions_list[ObjectCollisionType::AirSphere].push_back( ObjectCollisionType::BlackSphere );
-	define_collisitions_list[ObjectCollisionType::AirSphere].push_back( ObjectCollisionType::WaterSphere );
-	define_collisitions_list[ObjectCollisionType::AirSphere].push_back( ObjectCollisionType::FireSphere );
-	define_collisitions_list[ObjectCollisionType::AirSphere].push_back( ObjectCollisionType::StoneSphere );
-	define_collisitions_list[ObjectCollisionType::AirSphere].push_back( ObjectCollisionType::AirSphere );
+	define_collisitions_list[SecurityTargetType::AirSphere].push_back( SecurityTargetType::BlackSphere );
+	define_collisitions_list[SecurityTargetType::AirSphere].push_back( SecurityTargetType::WaterSphere );
+	define_collisitions_list[SecurityTargetType::AirSphere].push_back( SecurityTargetType::FireSphere );
+	define_collisitions_list[SecurityTargetType::AirSphere].push_back( SecurityTargetType::StoneSphere );
+	define_collisitions_list[SecurityTargetType::AirSphere].push_back( SecurityTargetType::AirSphere );
 
-	define_collisitions_list[ObjectCollisionType::WaterSphere].push_back( ObjectCollisionType::BlackSphere );
-	define_collisitions_list[ObjectCollisionType::WaterSphere].push_back( ObjectCollisionType::AirSphere );
-	define_collisitions_list[ObjectCollisionType::WaterSphere].push_back( ObjectCollisionType::FireSphere );
-	define_collisitions_list[ObjectCollisionType::WaterSphere].push_back( ObjectCollisionType::StoneSphere );
-	define_collisitions_list[ObjectCollisionType::WaterSphere].push_back( ObjectCollisionType::WaterSphere );
+	define_collisitions_list[SecurityTargetType::WaterSphere].push_back( SecurityTargetType::BlackSphere );
+	define_collisitions_list[SecurityTargetType::WaterSphere].push_back( SecurityTargetType::AirSphere );
+	define_collisitions_list[SecurityTargetType::WaterSphere].push_back( SecurityTargetType::FireSphere );
+	define_collisitions_list[SecurityTargetType::WaterSphere].push_back( SecurityTargetType::StoneSphere );
+	define_collisitions_list[SecurityTargetType::WaterSphere].push_back( SecurityTargetType::WaterSphere );
 
-	define_collisitions_list[ObjectCollisionType::FireSphere].push_back( ObjectCollisionType::BlackSphere );
-	define_collisitions_list[ObjectCollisionType::FireSphere].push_back( ObjectCollisionType::AirSphere );
-	define_collisitions_list[ObjectCollisionType::FireSphere].push_back( ObjectCollisionType::WaterSphere );
-	define_collisitions_list[ObjectCollisionType::FireSphere].push_back( ObjectCollisionType::StoneSphere );
-	define_collisitions_list[ObjectCollisionType::FireSphere].push_back( ObjectCollisionType::FireSphere );
+	define_collisitions_list[SecurityTargetType::FireSphere].push_back( SecurityTargetType::BlackSphere );
+	define_collisitions_list[SecurityTargetType::FireSphere].push_back( SecurityTargetType::AirSphere );
+	define_collisitions_list[SecurityTargetType::FireSphere].push_back( SecurityTargetType::WaterSphere );
+	define_collisitions_list[SecurityTargetType::FireSphere].push_back( SecurityTargetType::StoneSphere );
+	define_collisitions_list[SecurityTargetType::FireSphere].push_back( SecurityTargetType::FireSphere );
 
-	define_collisitions_list[ObjectCollisionType::TransformSphere].push_back( ObjectCollisionType::BlackSphere );
-	define_collisitions_list[ObjectCollisionType::TransformSphere].push_back( ObjectCollisionType::FireSphere );
-	define_collisitions_list[ObjectCollisionType::TransformSphere].push_back( ObjectCollisionType::WaterSphere );
-	define_collisitions_list[ObjectCollisionType::TransformSphere].push_back( ObjectCollisionType::AirSphere );
-	define_collisitions_list[ObjectCollisionType::TransformSphere].push_back( ObjectCollisionType::StoneSphere );
+	define_collisitions_list[SecurityTargetType::TransformSphere].push_back( SecurityTargetType::BlackSphere );
+	define_collisitions_list[SecurityTargetType::TransformSphere].push_back( SecurityTargetType::FireSphere );
+	define_collisitions_list[SecurityTargetType::TransformSphere].push_back( SecurityTargetType::WaterSphere );
+	define_collisitions_list[SecurityTargetType::TransformSphere].push_back( SecurityTargetType::AirSphere );
+	define_collisitions_list[SecurityTargetType::TransformSphere].push_back( SecurityTargetType::StoneSphere );
 	//--------------------------------------------------------------------
 }
 
 //---------------------------------------------------------------------
-bool GamePhysics::_checkCollisionConflicts( const ObjectCollisionType& i_first_collision, const ObjectCollisionType& i_second_collision )
+bool GamePhysics::_checkCollisionConflicts( const SecurityTargetType& i_first_collision, const SecurityTargetType& i_second_collision )
 {
-	const std::vector<ObjectCollisionType>& collision_vector = define_collisitions_list[i_first_collision];
+	const std::vector<SecurityTargetType>& collision_vector = define_collisitions_list[i_first_collision];
 	auto it_find = std::find( collision_vector.begin(), collision_vector.end(), i_second_collision );
 
 	if ( it_find == collision_vector.end() )
@@ -113,8 +113,8 @@ void GamePhysics::update()
 			if ( it_first_collided_object == it_second_collided_object )
 				continue;
 
-			const ObjectCollisionType& first_collision_type = p_first_object->getObjectCollisionType();
-			const ObjectCollisionType& second_collision_type = p_second_object->getObjectCollisionType();
+			const SecurityTargetType& first_collision_type = p_first_object->getObjectCollisionType();
+			const SecurityTargetType& second_collision_type = p_second_object->getObjectCollisionType();
 
 			if ( _checkCollisionConflicts( first_collision_type, second_collision_type ) )
 				continue;

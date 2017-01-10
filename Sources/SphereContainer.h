@@ -5,7 +5,7 @@
 
 class Sphere;
 class GameObject;
-enum class ObjectCollisionType;
+enum class SecurityTargetType;
 
 //---------------------------------------------------------------------
 class SphereContainer
@@ -19,8 +19,8 @@ public:
 	void showAll();
 	void hideAll();
 
-	Sphere* generate( const ObjectCollisionType& i_coll_type, cocos2d::Node* ip_sprite, bool is_player = false );
-	Sphere* generate( const ObjectCollisionType& i_coll_type, std::string i_sprite_path, bool is_player = false );
+	Sphere* generate( const SecurityTargetType& i_coll_type, cocos2d::Node* ip_sprite, bool is_player = false );
+	Sphere* generate( const SecurityTargetType& i_coll_type, std::string i_sprite_path, bool is_player = false );
 	
 	Sphere* getPlayerSphere();
 	const std::vector<Sphere*>& getSphereCollection() const;

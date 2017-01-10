@@ -22,7 +22,7 @@ Sphere::Sphere()
 {}
 
 //---------------------------------------------------------------------
-void Sphere::_initialise( ObjectCollisionType i_type, cocos2d::Node* ip_sprite )
+void Sphere::_initialise( SecurityTargetType i_type, cocos2d::Node* ip_sprite )
 {
 	mp_sprite = ip_sprite;
 	m_object_collision_type = i_type;
@@ -70,23 +70,23 @@ const float Sphere::getCollisionRadius() const
 //---------------------------------------------------------------------
 void Sphere::collideWithObject( GameObject* const i_object )
 {
-	const ObjectCollisionType& collision_type = i_object->getObjectCollisionType();
+	const SecurityTargetType& collision_type = i_object->getObjectCollisionType();
 	
 	switch ( collision_type )
 	{
-		case ObjectCollisionType::RedSphere:
+		case SecurityTargetType::RedSphere:
 		{
 			m_red_mass += GameConstants::red_sphere_mass;
 			m_mass += GameConstants::red_sphere_mass;
 		} break;
 
-		case ObjectCollisionType::YellowSphere:
+		case SecurityTargetType::YellowSphere:
 		{
 			m_yel_mass += GameConstants::yellow_sphere_mass;
 			m_mass += GameConstants::yellow_sphere_mass;
 		} break;
 
-		case ObjectCollisionType::TransformSphere:
+		case SecurityTargetType::TransformSphere:
 		{
 			randomChangeSphereType();
 		} break;
@@ -133,8 +133,8 @@ void Sphere::randomChangeSphereType()
 	std::random_device rd;
 	std::mt19937 rng( rd() );
 	
-	int start_index = ( int ) ObjectCollisionType::FireSphere;
-	int end_index = ( int ) ObjectCollisionType::TransformSphere - 1;
+	int start_index = ( int ) SecurityTargetType::FireSphere;
+	int end_index = ( int ) SecurityTargetType::TransformSphere - 1;
 	
 	std::uniform_int_distribution<int> uni( start_index, end_index );
 	int random_type_num = uni( rng );
@@ -142,7 +142,7 @@ void Sphere::randomChangeSphereType()
 	while ( random_type_num == ( int ) m_object_collision_type )
 		random_type_num = uni( rng );
 
-	m_object_collision_type = ( ObjectCollisionType ) random_type_num;
+	m_object_collision_type = ( SecurityTargetType ) random_type_num;
 	cocos2d::Node* p_parent = mp_sprite->getParent();
 
 	// -- temp fix
@@ -194,9 +194,9 @@ void Sphere::killed()
 //---------------------------------------------------------------------
 void Sphere::update()
 {
-	bool collided_with_food_sphere = ( m_object_collision_type == ObjectCollisionType::YellowSphere || m_object_collision_type == ObjectCollisionType::RedSphere );
+	bool collided_with_food_sphere = ( m_object_collision_type == SecurityTargetType::YellowSphere || m_object_collision_type == SecurityTargetType::RedSphere );
 
-	if ( collided_with_food_sphere || m_object_collision_type == ObjectCollisionType::TransformSphere )
+	if ( collided_with_food_sphere || m_object_collision_type == SecurityTargetType::TransformSphere )
 	{
 		if ( m_action_finished )
 			setNewRandomPosition();
