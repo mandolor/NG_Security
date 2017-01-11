@@ -130,8 +130,8 @@ void GameScene::_generateSecurityObjects()
 //---------------------------------------------------------------------
 void GameScene::_collidePlayer()
 {
-	Sphere* p_player = mp_sphere_container->getPlayerSphere();
-	cocos2d::Vec2 mass_red_yellow = p_player->getMass();
+// 	Sphere* p_player = mp_sphere_container->getPlayerSphere();
+// 	cocos2d::Vec2 mass_red_yellow = p_player->getMass();
 
 	// 	if ( !mp_game_sensor->getClosestEnemy( p_player->getPosition() ) )
 	// 	{

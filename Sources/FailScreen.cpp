@@ -41,18 +41,22 @@ bool FailScreen::init()
 	
     ui::Button* bttn_play = static_cast< ui::Button* >( rootNode->getChildByName( "bttn_replay" ) );
     bttn_play->addClickEventListener( play_callback );
+
+	// exit if user failed process
+	auto more_callback = [] ( Ref* )
+	{
+		Director::getInstance()->end();
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+		exit( 0 );
+#endif
+	};
 	
-// 	auto more_callback = [] ( Ref* )
-// 	{
-// 		auto scene = MainMenu::createScene();
-// 		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
-// 	};
-	
-// 	ui::Button* bttn_more = static_cast< ui::Button* >( rootNode->getChildByName( "bttn_more" ) );
-// 	bttn_more->addClickEventListener( more_callback );
-// 
-// 	ui::Button* bttn_menu = static_cast< ui::Button* >( rootNode->getChildByName( "bttn_exit" ) );
-// 	bttn_menu->addClickEventListener( more_callback );
+	ui::Button* bttn_more = static_cast< ui::Button* >( rootNode->getChildByName( "bttn_more" ) );
+	bttn_more->addClickEventListener( more_callback );
+
+	ui::Button* bttn_menu = static_cast< ui::Button* >( rootNode->getChildByName( "bttn_exit" ) );
+	bttn_menu->addClickEventListener( more_callback );
 	
     return true;
 }
