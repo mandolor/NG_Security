@@ -5,7 +5,7 @@
 #include "GameObject.h"
 #include "GlobalSceneSensor.h"
 
-typedef std::function<void(void)> void_callback;
+typedef std::function<void( GameObject* )> function_callback;
 
 //---------------------------------------------------------------------
 class Sphere : public GameObject
@@ -32,8 +32,8 @@ public:
 	void attachTo( cocos2d::Node* ip_parent, int i_order = 0 );
 	void setNewRandomPosition();
 	
-	void setCollideCallback( void_callback i_func );
-	void setKilledCallback( void_callback i_func );
+	void setCollideCallback( function_callback i_func );
+	void setKilledCallback( function_callback i_func );
 
 protected:
 	friend class SphereContainer;
@@ -61,8 +61,8 @@ private:
 	float					m_red_mass;
 	float					m_yel_mass;
 	
-	void_callback			m_killed_callback;
-	void_callback			m_collide_callback;
+/*	void_callback			m_killed_callback;*/
+	function_callback			m_collide_callback;
 };
 
 #endif

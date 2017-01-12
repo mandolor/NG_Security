@@ -124,7 +124,7 @@ void Sphere::collideWithObject( GameObject* const i_object )
 	mp_sprite->setScale( scaled_value );
 
 	if ( m_collide_callback )
-		m_collide_callback();
+		m_collide_callback( this );
 }
 
 //---------------------------------------------------------------------
@@ -187,8 +187,8 @@ void Sphere::killed()
 	GameObject::killed();
 	setVisible( false );
 	
-	if ( m_killed_callback )
-		m_killed_callback();
+// 	if ( m_killed_callback )
+// 		m_killed_callback();
 }
 
 //---------------------------------------------------------------------
@@ -323,14 +323,14 @@ cocos2d::Vec2 Sphere::getMass() const
 }
 
 //---------------------------------------------------------------------
-void Sphere::setCollideCallback( void_callback i_func )
+void Sphere::setCollideCallback( function_callback i_func )
 {
 	m_collide_callback = i_func;
 }
 
 //---------------------------------------------------------------------
-void Sphere::setKilledCallback( void_callback i_func )
+void Sphere::setKilledCallback( function_callback i_func )
 {
-	m_killed_callback = i_func;
+	/*m_killed_callback = i_func;*/
 }
 

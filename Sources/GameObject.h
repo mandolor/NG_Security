@@ -40,7 +40,7 @@ public:
 	unsigned int getMass() const	{ return m_mass; }
 	virtual void killed()			{ m_killed = true; }
 
-	SecurityTargetType getSecurityTargetType() const { return m_object_collision_type; }
+	const SecurityTargetType& getSecurityTargetType() const { return m_object_collision_type; }
 
 protected:
 	unsigned int							m_mass;

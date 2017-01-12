@@ -9,6 +9,7 @@
 #include "GlobalSceneSensor.h"
 #include "SceneDirector.h"
 #include "GlobalGameStates.h"
+#include "FailScreen.h"
 
 #pragma comment(lib, "libcocos2d.lib")
 
@@ -106,11 +107,8 @@ void GameScene::_generateSecurityObjects()
 	mp_sphere_container->addPhysicsObject( p_sphere );
 	p_sphere->setPosition( main_security_object_position );
 
-	p_sphere->setCollideCallback( std::bind( &GameScene::_onEventCollide, this ) );
-
 	// creating security objects
 	std::map<int, TargetInformation*> p_security_objects = p_scene_rule->getSecurityTargets();
-	std::vector<SecurityTargetType> p_target_orders = p_scene_rule->getInteractionOrder();
 
 	for ( unsigned int index = 0; index < GlobalStates::target_objects_count; ++index )
 	{
@@ -125,33 +123,27 @@ void GameScene::_generateSecurityObjects()
 		mp_sphere_container->addPhysicsObject( p_sphere );
 
 		p_sphere->setPosition( security_object_position );
+		p_sphere->setCollideCallback( std::bind( &GameScene::_onEventCollide, this, std::placeholders::_1 ) );
 	}
 }
 
 //---------------------------------------------------------------------
-void GameScene::_onEventCollide()
+void GameScene::_onEventCollide( GameObject* ip_sphere )
 {
+	SecurityScene scene_in_process = SecurityScene::TestScene1;
+	SceneRule* p_scene_rule = mp_scene_director->getSecuritySceneRule( scene_in_process );
+	std::vector<SecurityTargetType> p_target_orders = p_scene_rule->getInteractionOrder();
 
+	static unsigned int target_index = 0;
+	SecurityTargetType needed_security_target_type = p_target_orders.at( target_index++ );
 
+	const SecurityTargetType& current_security_target_type = ip_sphere->getSecurityTargetType();
 
-
-
-
-
-
-
-
-// 	Sphere* p_player = mp_sphere_container->getPlayerSphere();
-// 	cocos2d::Vec2 mass_red_yellow = p_player->getMass();
-
-	// 	if ( !mp_game_sensor->getClosestEnemy( p_player->getPosition() ) )
-	// 	{
-	// 		int mass = static_cast<GameObject*>( p_player )->getMass();
-	// 		mass -= GameConstants::base_mass;
-	// 	
-	// 		auto scene = WinScreen::createScene( mass );
-	// 		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
-	// 	}
+	if ( current_security_target_type != needed_security_target_type )
+	{
+		auto scene = FailScreen::createScene();
+		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
+	}
 }
 
 //---------------------------------------------------------------------
@@ -174,24 +166,6 @@ void GameScene::_parallaxCreate()
 
 	mp_game_layer->addChild( m_parallax );
 }
-
-//---------------------------------------------------------------------
-// void GameScene::_generateSecurityEnemies()
-// {
-// 	int start_index = static_cast<int> ( ObjectCollisionType::BlackSphere );
-// 	int end_index = static_cast<int> ( ObjectCollisionType::TransformSphere );
-// 
-// 	for ( int index = start_index; index <= end_index; ++index )
-// 	{
-// 		ObjectCollisionType type = static_cast<ObjectCollisionType> ( index );
-// 		Sphere* p_sphere = mp_sphere_container->generate( type, g_object_collision_sprite[ index ] );
-// 	
-// 		p_sphere->attachTo( mp_game_layer, SPHERE_OBJECT_ORDER );
-// 		p_sphere->setNewRandomPosition();
-// 
-// 		mp_sphere_container->addPhysicsObject( p_sphere );
-// 	}
-// }
 
 //---------------------------------------------------------------------
 bool GameScene::onTouchBegan( cocos2d::Touch* touch, cocos2d::Event* event )

@@ -9,6 +9,7 @@ class GlobalSceneSensor;
 class SphereContainer;
 class GamePhysics;
 class SceneDirector;
+class GameObject;
 
 //---------------------------------------------------------------------
 class GameScene : public cocos2d::LayerColor
@@ -34,10 +35,8 @@ public:
 	virtual ~GameScene();
 
 private:
-	void _generateTargetSecurityObjects();
 	void _generateSecurityObjects();
-	
-	void _onEventCollide();
+	void _onEventCollide( GameObject* ip_sphere );
 	void _parallaxCreate();
 	//void _generateSecurityEnemies();
 	
