@@ -106,10 +106,11 @@ void GameScene::_generateSecurityObjects()
 	mp_sphere_container->addPhysicsObject( p_sphere );
 	p_sphere->setPosition( main_security_object_position );
 
-	p_sphere->setCollideCallback( std::bind( &GameScene::_collidePlayer, this ) );
+	p_sphere->setCollideCallback( std::bind( &GameScene::_onEventCollide, this ) );
 
 	// creating security objects
 	std::map<int, TargetInformation*> p_security_objects = p_scene_rule->getSecurityTargets();
+	std::vector<SecurityTargetType> p_target_orders = p_scene_rule->getInteractionOrder();
 
 	for ( unsigned int index = 0; index < GlobalStates::target_objects_count; ++index )
 	{
@@ -128,8 +129,18 @@ void GameScene::_generateSecurityObjects()
 }
 
 //---------------------------------------------------------------------
-void GameScene::_collidePlayer()
+void GameScene::_onEventCollide()
 {
+
+
+
+
+
+
+
+
+
+
 // 	Sphere* p_player = mp_sphere_container->getPlayerSphere();
 // 	cocos2d::Vec2 mass_red_yellow = p_player->getMass();
 

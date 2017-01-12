@@ -70,7 +70,7 @@ const float Sphere::getCollisionRadius() const
 //---------------------------------------------------------------------
 void Sphere::collideWithObject( GameObject* const i_object )
 {
-	const SecurityTargetType& collision_type = i_object->getObjectCollisionType();
+	const SecurityTargetType& collision_type = i_object->getSecurityTargetType();
 	
 	switch ( collision_type )
 	{
@@ -333,3 +333,4 @@ void Sphere::setKilledCallback( void_callback i_func )
 {
 	m_killed_callback = i_func;
 }
+

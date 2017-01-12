@@ -34,7 +34,7 @@ public:
 	
 	void setCollideCallback( void_callback i_func );
 	void setKilledCallback( void_callback i_func );
-	
+
 protected:
 	friend class SphereContainer;
     void _initialise( SecurityTargetType i_type, cocos2d::Node* ip_sprite );

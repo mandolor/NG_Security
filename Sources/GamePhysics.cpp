@@ -113,8 +113,8 @@ void GamePhysics::update()
 			if ( it_first_collided_object == it_second_collided_object )
 				continue;
 
-			const SecurityTargetType& first_collision_type = p_first_object->getObjectCollisionType();
-			const SecurityTargetType& second_collision_type = p_second_object->getObjectCollisionType();
+			const SecurityTargetType& first_collision_type = p_first_object->getSecurityTargetType();
+			const SecurityTargetType& second_collision_type = p_second_object->getSecurityTargetType();
 
 			if ( _checkCollisionConflicts( first_collision_type, second_collision_type ) )
 				continue;

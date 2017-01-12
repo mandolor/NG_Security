@@ -13,7 +13,7 @@ std::map<int, TargetInformation*> SceneRule::getSecurityTargets() const
 }
 
 //---------------------------------------------------------------------
-std::vector<int> SceneRule::getInteractionOrder() const
+std::vector<SecurityTargetType> SceneRule::getInteractionOrder() const
 {
 	return m_interaction_order;
 }
@@ -35,6 +35,12 @@ void SceneRule::_addTarget( const cocos2d::Vec2& i_position, const SecurityTarge
 }
 
 //---------------------------------------------------------------------
+void SceneRule::_setInteractionOrder( const std::vector<SecurityTargetType>& i_order )
+{
+	m_interaction_order = i_order;
+}
+
+//---------------------------------------------------------------------
 void SceneDirector::buildSecurityScenes()
 {
 	//---------------------------------------------------------------------
@@ -42,6 +48,10 @@ void SceneDirector::buildSecurityScenes()
 	p_scene_rule_1->_setMainObjectPosition( cocos2d::Vec2( 200.0f, 200.0f ) );
 
 	_setUpSceneWithSecurityTargets( p_scene_rule_1 );
+
+	std::vector<SecurityTargetType> p_target_orders_scene_1 = { SecurityTargetType::YellowSphere, SecurityTargetType::RedSphere, SecurityTargetType::YellowSphere };
+	p_scene_rule_1->_setInteractionOrder( p_target_orders_scene_1 );
+
 	m_scene_rules.insert( std::make_pair( SecurityScene::TestScene1, p_scene_rule_1 ) );
 
 	//---------------------------------------------------------------------
@@ -49,6 +59,10 @@ void SceneDirector::buildSecurityScenes()
 	p_scene_rule_2->_setMainObjectPosition( cocos2d::Vec2( 400.0f, 200.0f ) );
 
 	_setUpSceneWithSecurityTargets( p_scene_rule_2 );
+
+	std::vector<SecurityTargetType> p_target_orders_scene_2 = { SecurityTargetType::RedSphere, SecurityTargetType::YellowSphere, SecurityTargetType::RedSphere };
+	p_scene_rule_2->_setInteractionOrder( p_target_orders_scene_2 );
+
 	m_scene_rules.insert( std::make_pair( SecurityScene::TestScene2, p_scene_rule_2 ) );
 
 	//---------------------------------------------------------------------
@@ -56,6 +70,10 @@ void SceneDirector::buildSecurityScenes()
 	p_scene_rule_3->_setMainObjectPosition( cocos2d::Vec2( 400.0f, 400.0f ) );
 
 	_setUpSceneWithSecurityTargets( p_scene_rule_3 );
+
+	std::vector<SecurityTargetType> p_target_orders_scene_3 = { SecurityTargetType::YellowSphere, SecurityTargetType::YellowSphere, SecurityTargetType::RedSphere };
+	p_scene_rule_3->_setInteractionOrder( p_target_orders_scene_3 );
+
 	m_scene_rules.insert( std::make_pair( SecurityScene::TestScene3, p_scene_rule_3 ) );
 }
 

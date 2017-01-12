@@ -36,16 +36,17 @@ class SceneRule
 public:
 	cocos2d::Vec2							getMainSecurityObjectPosition() const;
 	std::map<int, TargetInformation*>		getSecurityTargets() const;
-	std::vector<int>						getInteractionOrder() const;
+	std::vector<SecurityTargetType>			getInteractionOrder() const;
 
 protected:
 	void _setMainObjectPosition( const cocos2d::Vec2& i_position );
 	void _addTarget( const cocos2d::Vec2& i_position, const SecurityTargetType& i_type );
+	void _setInteractionOrder( const std::vector<SecurityTargetType>& i_order );
 
 private:
 	cocos2d::Vec2							m_main_object_position;
 	std::map<int, TargetInformation*>		m_target_configurations;
-	std::vector<int>						m_interaction_order;
+	std::vector<SecurityTargetType>			m_interaction_order;
 	
 private:
 	friend class SceneDirector;

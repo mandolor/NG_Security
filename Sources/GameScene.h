@@ -37,7 +37,7 @@ private:
 	void _generateTargetSecurityObjects();
 	void _generateSecurityObjects();
 	
-	void _collidePlayer();
+	void _onEventCollide();
 	void _parallaxCreate();
 	//void _generateSecurityEnemies();
 	

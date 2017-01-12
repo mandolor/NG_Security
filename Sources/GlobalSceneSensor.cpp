@@ -11,7 +11,7 @@ GameObject*	GlobalSceneSensor::getClosestFoodSphere( const cocos2d::Vec2& i_posi
 
 	for ( auto object : p_object_container )
 	{
-		SecurityTargetType collision_type = object->getObjectCollisionType();
+		SecurityTargetType collision_type = object->getSecurityTargetType();
 		bool not_collided_with_food_sphere = ( collision_type != SecurityTargetType::YellowSphere && collision_type != SecurityTargetType::RedSphere );
 
 		if ( not_collided_with_food_sphere || !object->isVisible() || object->getPosition().equals( i_position ) )
@@ -41,7 +41,7 @@ GameObject*	GlobalSceneSensor::getClosestEnemy( const cocos2d::Vec2& i_position 
 	
 	for ( auto object : p_object_container )
 	{
-		SecurityTargetType collision_type = object->getObjectCollisionType();
+		SecurityTargetType collision_type = object->getSecurityTargetType();
 		bool collided_with_food_sphere = ( collision_type == SecurityTargetType::YellowSphere || collision_type == SecurityTargetType::RedSphere );
 
 		if ( collided_with_food_sphere || collision_type == SecurityTargetType::TransformSphere || !object->isVisible() || object->getPosition().equals( i_position ) )
