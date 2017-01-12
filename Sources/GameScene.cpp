@@ -10,6 +10,7 @@
 #include "SceneDirector.h"
 #include "GlobalGameStates.h"
 #include "FailScreen.h"
+#include "WinScreen.h"
 
 #pragma comment(lib, "libcocos2d.lib")
 
@@ -142,6 +143,12 @@ void GameScene::_onEventCollide( GameObject* ip_sphere )
 	if ( current_security_target_type != needed_security_target_type )
 	{
 		auto scene = FailScreen::createScene();
+		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
+	}
+
+	if ( target_index >= GlobalStates::target_objects_count )
+	{
+		auto scene = WinScreen::createScene();
 		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
 	}
 }

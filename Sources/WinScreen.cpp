@@ -8,24 +8,24 @@ USING_NS_CC;
 using namespace cocostudio::timeline;
 
 //---------------------------------------------------------------------
-Scene* WinScreen::createScene( int i_win_mass )
+Scene* WinScreen::createScene()
 {
     auto scene = Scene::create();
-    auto layer = WinScreen::create( i_win_mass );
+    auto layer = WinScreen::create();
 	
     scene->addChild( layer );	
     return scene;
 }
 
 //---------------------------------------------------------------------
-WinScreen* WinScreen::create( int i_win_mass )
+WinScreen* WinScreen::create()
 {
 	WinScreen *ret = new (std::nothrow) WinScreen();
 
 	if (ret && ret->init())
 	{
 		ret->autorelease();
-		ret->setScore( i_win_mass );
+		//ret->setScore( i_win_mass );
 		return ret;
 	}
 	else
@@ -33,12 +33,6 @@ WinScreen* WinScreen::create( int i_win_mass )
 		CC_SAFE_DELETE(ret);
 		return nullptr;
 	}
-}
-
-//---------------------------------------------------------------------
-void WinScreen::setScore( int i_win_mass )
-{
-	m_label_score->setString( cocos2d::StringUtils::toString( i_win_mass ) );
 }
 
 //---------------------------------------------------------------------
@@ -53,7 +47,7 @@ bool WinScreen::init()
     addChild(sceneNode);
 
     auto rootNode = sceneNode->getChildByName( "root" );
-	m_label_score = static_cast< cocos2d::ui::Text* >( rootNode->getChildByName( "label_score" ) );
+	//m_label_score = static_cast< cocos2d::ui::Text* >( rootNode->getChildByName( "label_score" ) );
 	
     auto next_callback = [] ( Ref* )
     {
