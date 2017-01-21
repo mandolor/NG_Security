@@ -34,6 +34,7 @@ private:
 class SceneRule
 {
 public:
+	SceneRule() : m_target_index_counter( 0 ) {};
 	cocos2d::Vec2							getMainSecurityObjectPosition() const;
 	std::map<int, TargetInformation*>		getSecurityTargets() const;
 	std::vector<SecurityTargetType>			getInteractionOrder() const;
@@ -47,6 +48,7 @@ private:
 	cocos2d::Vec2							m_main_object_position;
 	std::map<int, TargetInformation*>		m_target_configurations;
 	std::vector<SecurityTargetType>			m_interaction_order;
+	unsigned int							m_target_index_counter;
 	
 private:
 	friend class SceneDirector;

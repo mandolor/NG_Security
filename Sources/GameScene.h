@@ -15,6 +15,8 @@ class GameObject;
 class GameScene : public cocos2d::LayerColor
 {
 public:
+	GameScene() : m_target_order_index( 0 ) {};
+
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     bool init() override;
 
@@ -42,6 +44,7 @@ private:
 	
 private:
 	bool							m_touchMoved;
+	unsigned int					m_target_order_index;
 
 	cocos2d::Node*					mp_game_layer;
 	cocos2d::Vec2					m_touch_began_pos;

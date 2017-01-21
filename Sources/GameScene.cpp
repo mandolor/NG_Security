@@ -135,9 +135,7 @@ void GameScene::_onEventCollide( GameObject* ip_sphere )
 	SceneRule* p_scene_rule = mp_scene_director->getSecuritySceneRule( scene_in_process );
 	std::vector<SecurityTargetType> p_target_orders = p_scene_rule->getInteractionOrder();
 
-	static unsigned int target_index = 0;
-	SecurityTargetType needed_security_target_type = p_target_orders.at( target_index++ );
-
+	SecurityTargetType needed_security_target_type = p_target_orders.at( m_target_order_index++ );
 	const SecurityTargetType& current_security_target_type = ip_sphere->getSecurityTargetType();
 
 	if ( current_security_target_type != needed_security_target_type )
@@ -146,7 +144,7 @@ void GameScene::_onEventCollide( GameObject* ip_sphere )
 		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
 	}
 
-	if ( target_index >= GlobalStates::target_objects_count )
+	if ( m_target_order_index >= GlobalStates::target_objects_count )
 	{
 		auto scene = WinScreen::createScene();
 		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );

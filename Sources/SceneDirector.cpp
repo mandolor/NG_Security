@@ -27,11 +27,9 @@ void SceneRule::_setMainObjectPosition( const cocos2d::Vec2& i_position )
 //---------------------------------------------------------------------
 void SceneRule::_addTarget( const cocos2d::Vec2& i_position, const SecurityTargetType& i_type )
 {
-	static unsigned int target_index = 0;
 	TargetInformation* p_target = new TargetInformation;
-
 	p_target->_setTargetInformation( i_position, i_type );
-	m_target_configurations.insert( std::make_pair( target_index++, p_target ) );
+	m_target_configurations.insert( std::make_pair( m_target_index_counter++, p_target ) );
 }
 
 //---------------------------------------------------------------------
