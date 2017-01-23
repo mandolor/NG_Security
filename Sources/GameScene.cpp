@@ -21,6 +21,7 @@ SphereContainer*		GameScene::mp_sphere_container = nullptr;
 GamePhysics*			GameScene::mp_game_physics = nullptr;
 GlobalSceneSensor*		GameScene::mp_game_sensor = nullptr;
 SceneDirector*			GameScene::mp_scene_director = nullptr;
+SecurityScene			GameScene::m_security_scene = SecurityScene::TestScene1;
 
 //---------------------------------------------------------------------
 GameScene::~GameScene()
@@ -72,7 +73,7 @@ bool GameScene::init()
 	mp_scene_director->buildSecurityScenes();
 	_generateSecurityObjects();
 
-	_parallaxCreate();	
+	_parallaxCreate();
 	mp_sphere_container->showAll();
 	
 	scheduleUpdate();
@@ -96,8 +97,7 @@ GlobalSceneSensor* GameScene::getGlobalGameSensor()
 void GameScene::_generateSecurityObjects()
 {
 	// creating main security object
-	SecurityScene scene_in_process = SecurityScene::TestScene1;
-	SceneRule* p_scene_rule = mp_scene_director->getSecuritySceneRule( scene_in_process );
+	SceneRule* p_scene_rule = mp_scene_director->getSecuritySceneRule( m_security_scene );
 
 	cocos2d::Vec2 main_security_object_position = p_scene_rule->getMainSecurityObjectPosition();
 
@@ -131,8 +131,7 @@ void GameScene::_generateSecurityObjects()
 //---------------------------------------------------------------------
 void GameScene::_onEventCollide( GameObject* ip_sphere )
 {
-	SecurityScene scene_in_process = SecurityScene::TestScene1;
-	SceneRule* p_scene_rule = mp_scene_director->getSecuritySceneRule( scene_in_process );
+	SceneRule* p_scene_rule = mp_scene_director->getSecuritySceneRule( m_security_scene );
 	std::vector<SecurityTargetType> p_target_orders = p_scene_rule->getInteractionOrder();
 
 	SecurityTargetType needed_security_target_type = p_target_orders.at( m_target_order_index++ );
@@ -146,6 +145,9 @@ void GameScene::_onEventCollide( GameObject* ip_sphere )
 
 	if ( m_target_order_index >= GlobalStates::target_objects_count )
 	{
+		int scene_id = static_cast< int >( m_security_scene );
+		m_security_scene = static_cast< SecurityScene >( ++scene_id );
+
 		auto scene = WinScreen::createScene();
 		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
 	}

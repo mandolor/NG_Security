@@ -4,11 +4,11 @@
 
 #include "cocos2d.h"
 #include "ui/CocosGUI.h"
+#include "SceneDirector.h"
 
 class GlobalSceneSensor;
 class SphereContainer;
 class GamePhysics;
-class SceneDirector;
 class GameObject;
 
 //---------------------------------------------------------------------
@@ -43,6 +43,8 @@ private:
 	//void _generateSecurityEnemies();
 	
 private:
+	static SecurityScene			m_security_scene;
+
 	bool							m_touchMoved;
 	unsigned int					m_target_order_index;
 
