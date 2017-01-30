@@ -12,6 +12,8 @@
 #include "FailScreen.h"
 #include "WinScreen.h"
 
+#include <boost/asio.hpp>
+
 #pragma comment(lib, "libcocos2d.lib")
 
 USING_NS_CC;
