@@ -92,9 +92,6 @@
     <Filter Include="Screens\Screens">
       <UniqueIdentifier>{bcfc158e-5cb5-44ac-9f6d-6410fe609970}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Screens\Menu">
-      <UniqueIdentifier>{b6514aab-3ab3-44df-be2e-9632b3e10892}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Game Scene">
       <UniqueIdentifier>{6b140864-ecf4-48b1-9534-bc04cbf86b24}</UniqueIdentifier>
     </Filter>

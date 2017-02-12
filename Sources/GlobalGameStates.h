@@ -5,6 +5,7 @@
 #include "cocos2d.h"
 #include <map>
 
+//---------------------------------------------------------------------
 namespace GlobalStates
 {
 	const unsigned int	target_objects_count = 3;
