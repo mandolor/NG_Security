@@ -99,7 +99,7 @@ Sphere* SphereContainer::generate( const SecurityTargetType& i_coll_type, cocos2
 	Sphere*	p_sphere = new Sphere;
 	p_sphere->_initialise( i_coll_type, ip_sprite );
 
-	p_sphere->setNewRandomPosition();
+	p_sphere->setRandomPosition();
 	p_sphere->setVisible( false );
 
 	m_sphere_collection.push_back( p_sphere );

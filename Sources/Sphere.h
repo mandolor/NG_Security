@@ -20,7 +20,6 @@ public:
     virtual const float getCollisionRadius() const override;
 	virtual void collideWithObject( GameObject* const i_object ) override;
 
-    virtual void randomChangeSphereType();
 	virtual void setTargetPoint( const cocos2d::Vec2& i_point );
 
 	virtual void update();
@@ -30,7 +29,7 @@ public:
 	virtual cocos2d::Vec2 getMass() const;
 	
 	void attachTo( cocos2d::Node* ip_parent, int i_order = 0 );
-	void setNewRandomPosition();
+	void setRandomPosition();
 	
 	void setCollideCallback( function_callback i_func );
 	void setKilledCallback( function_callback i_func );

@@ -66,99 +66,11 @@ const float Sphere::getCollisionRadius() const
 	return g_object_collision_radius[ index ] * mp_sprite->getScale();
 }
 
-// TO DO: rewrite this segment
 //---------------------------------------------------------------------
 void Sphere::collideWithObject( GameObject* const i_object )
 {
-	const SecurityTargetType& collision_type = i_object->getSecurityTargetType();
-	
-	switch ( collision_type )
-	{
-		case SecurityTargetType::RedSphere:
-		{
-			m_red_mass += GameConstants::red_sphere_mass;
-			m_mass += GameConstants::red_sphere_mass;
-		} break;
-
-		case SecurityTargetType::YellowSphere:
-		{
-			m_yel_mass += GameConstants::yellow_sphere_mass;
-			m_mass += GameConstants::yellow_sphere_mass;
-		} break;
-
-		case SecurityTargetType::TransformSphere:
-		{
-			randomChangeSphereType();
-		} break;
-
-		// collide with other sphere
-		default:
-		{
-			unsigned int sphere_mass = i_object->getMass();
-
-			if ( sphere_mass < m_mass )
-			{
-				m_mass += ( sphere_mass - GameConstants::base_mass );
-				setCollided();
-
-				i_object->setCollided();
-				i_object->killed();
-			}
-			else
-			{
-				GlobalSceneSensor* p_sensor = GameScene::getGlobalGameSensor();
-				GameObject* p_food_sphere = p_sensor->getClosestFoodSphere( m_position );
-
-				const cocos2d::Vec2& food_sphere_position = p_food_sphere->getPosition();
-				setTargetPoint( p_food_sphere->getPosition() );
-
-				m_logic_state = SphereLogicState::SeekForFood;
-
-				m_action_finished = true;
-				mp_enemy = nullptr;
-			}
-		} break;
-	}
-
-	float scaled_value = GameConstants::base_scale * m_mass / GameConstants::base_mass;
-	mp_sprite->setScale( scaled_value );
-
 	if ( m_collide_callback )
 		m_collide_callback( this );
-}
-
-//---------------------------------------------------------------------
-void Sphere::randomChangeSphereType()
-{
-	std::random_device rd;
-	std::mt19937 rng( rd() );
-	
-	int start_index = ( int ) SecurityTargetType::FireSphere;
-	int end_index = ( int ) SecurityTargetType::TransformSphere - 1;
-	
-	std::uniform_int_distribution<int> uni( start_index, end_index );
-	int random_type_num = uni( rng );
-	
-	while ( random_type_num == ( int ) m_object_collision_type )
-		random_type_num = uni( rng );
-
-	m_object_collision_type = ( SecurityTargetType ) random_type_num;
-	cocos2d::Node* p_parent = mp_sprite->getParent();
-
-	// -- temp fix
-	mp_sprite->setVisible( false );
-	
-	float scale = mp_sprite->getScale();
-	float order = mp_sprite->getZOrder();
-	
-	std::string sprite_path = g_object_collision_sprite[ random_type_num ];
-	mp_sprite = SpriteCache::getInstance()->cloneSprite( sprite_path );
-	
-	attachTo(p_parent, order);
-	mp_sprite->setScale( scale );
-
-	mp_sprite->setPosition( m_position );
-	setTargetPoint( m_target_position );
 }
 
 //---------------------------------------------------------------------
@@ -199,7 +111,7 @@ void Sphere::update()
 	if ( collided_with_food_sphere || m_object_collision_type == SecurityTargetType::TransformSphere )
 	{
 		if ( m_action_finished )
-			setNewRandomPosition();
+			setRandomPosition();
 	
 		m_action_finished = false;
 	}
@@ -225,7 +137,7 @@ void Sphere::regenerateSphere()
 	m_killed = false;
 
 	m_action_finished = false;
-	setNewRandomPosition();
+	setRandomPosition();
 }
 
 //---------------------------------------------------------------------
@@ -236,7 +148,7 @@ void Sphere::_updatePosition()
 }
 
 //---------------------------------------------------------------------
-void Sphere::setNewRandomPosition()
+void Sphere::setRandomPosition()
 {
 	std::random_device rd;
 	std::mt19937 rng( rd() );
@@ -261,52 +173,6 @@ void Sphere::_updateLogic()
 	{
 		regenerateSphere();
 		return;
-	}
-
-	GlobalSceneSensor* p_sensor = GameScene::getGlobalGameSensor();
-	
-	if ( m_logic_state == SphereLogicState::NoMove )
-	{
-		GameObject* p_food_sphere = p_sensor->getClosestFoodSphere( m_position );
-		setTargetPoint( p_food_sphere->getPosition() );
-		m_logic_state = SphereLogicState::SeekForFood;
-	}
-	else if ( m_logic_state == SphereLogicState::SeekForFood )
-	{
-		if ( m_action_finished )
-		{
-			m_logic_state = SphereLogicState::NoMove;
-		}
-		
-		GameObject* p_enemy = p_sensor->getClosestEnemy( m_position );
-		const cocos2d::Vec2& enemy_position = p_enemy->getPosition();
-		
-		GameObject* p_food_sphere = p_sensor->getClosestFoodSphere( m_position );
-		const cocos2d::Vec2& food_sphere_position = p_food_sphere->getPosition();
-		
-		m_action_finished = false;
-		setTargetPoint( p_food_sphere->getPosition() );
-		
-		if ( ( enemy_position - m_position ).length() <= g_warning_distance )
-		{
-			if ( p_enemy->getMass() < m_mass )
-			{
-				m_logic_state = SphereLogicState::ChaseForEnemy;
-				mp_enemy = p_enemy;
-			}
-		}
-	}
-	else if ( m_logic_state == SphereLogicState::ChaseForEnemy )
-	{
-		if ( mp_enemy->getMass() < m_mass )
-		{
-			const cocos2d::Vec2& enemy_position = mp_enemy->getPosition();
-			setTargetPoint( enemy_position );
-		}
-		else
-		{
-			m_logic_state == SphereLogicState::NoMove;
-		}
 	}
 }
 
