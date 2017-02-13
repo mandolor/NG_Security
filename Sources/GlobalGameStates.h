@@ -8,7 +8,8 @@
 //---------------------------------------------------------------------
 namespace GlobalStates
 {
-	const unsigned int	target_objects_count = 3;
+	const unsigned int	target_objects_count = 20;
+	const unsigned int	security_ordered_objects_count = 3;
 	const unsigned int	object_layer_order = 10;
 	const unsigned int	parallax_layer_order = 6;
 }

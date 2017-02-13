@@ -145,7 +145,7 @@ void GameScene::_onEventCollide( GameObject* ip_sphere )
 		Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
 	}
 
-	if ( m_target_order_index >= GlobalStates::target_objects_count )
+	if ( m_target_order_index >= GlobalStates::security_ordered_objects_count )
 	{
 		int scene_id = static_cast< int >( m_security_scene );
 		m_security_scene = static_cast< SecurityScene >( ++scene_id );
