@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00EB454B1E564AC000B6E9A7 /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00EB45491E564AB900B6E9A7 /* client.cpp */; };
-		00EB454C1E564AC000B6E9A7 /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00EB454A1E564AB900B6E9A7 /* server.cpp */; };
+		00EB454B1E564AC000B6E9A7 /* Client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00EB45491E564AB900B6E9A7 /* Client.cpp */; };
 		00EB456C1E564BCF00B6E9A7 /* libboost_filesystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EB45661E564BCF00B6E9A7 /* libboost_filesystem.a */; };
 		00EB456D1E564BCF00B6E9A7 /* libboost_system.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EB45671E564BCF00B6E9A7 /* libboost_system.a */; };
 		00EB456E1E564BCF00B6E9A7 /* libboost_thread.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EB45681E564BCF00B6E9A7 /* libboost_thread.a */; };
 		00EB456F1E564BCF00B6E9A7 /* libboost_timer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EB45691E564BCF00B6E9A7 /* libboost_timer.a */; };
 		00EB45701E564BCF00B6E9A7 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EB456A1E564BCF00B6E9A7 /* libcrypto.a */; };
 		00EB45711E564BCF00B6E9A7 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00EB456B1E564BCF00B6E9A7 /* libssl.a */; };
+		00EE802F1E5B7AEF00CC6488 /* Client.h in Headers */ = {isa = PBXBuildFile; fileRef = 00EE802E1E5B7AEF00CC6488 /* Client.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		00EB45331E56474A00B6E9A7 /* lib2BytesNetwork.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = lib2BytesNetwork.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		00EB45491E564AB900B6E9A7 /* client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
-		00EB454A1E564AB900B6E9A7 /* server.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
+		00EB45491E564AB900B6E9A7 /* Client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Client.cpp; sourceTree = "<group>"; };
 		00EB45661E564BCF00B6E9A7 /* libboost_filesystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_filesystem.a; path = ../libs/lib/macOS/libboost_filesystem.a; sourceTree = "<group>"; };
 		00EB45671E564BCF00B6E9A7 /* libboost_system.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_system.a; path = ../libs/lib/macOS/libboost_system.a; sourceTree = "<group>"; };
 		00EB45681E564BCF00B6E9A7 /* libboost_thread.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_thread.a; path = ../libs/lib/macOS/libboost_thread.a; sourceTree = "<group>"; };
 		00EB45691E564BCF00B6E9A7 /* libboost_timer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libboost_timer.a; path = ../libs/lib/macOS/libboost_timer.a; sourceTree = "<group>"; };
 		00EB456A1E564BCF00B6E9A7 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = ../libs/lib/macOS/libcrypto.a; sourceTree = "<group>"; };
 		00EB456B1E564BCF00B6E9A7 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = ../libs/lib/macOS/libssl.a; sourceTree = "<group>"; };
+		00EE802E1E5B7AEF00CC6488 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Client.h; path = ../../include/Client.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +74,8 @@
 		00EB45481E564AB900B6E9A7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				00EB45491E564AB900B6E9A7 /* client.cpp */,
-				00EB454A1E564AB900B6E9A7 /* server.cpp */,
+				00EB45491E564AB900B6E9A7 /* Client.cpp */,
+				00EE802E1E5B7AEF00CC6488 /* Client.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -101,6 +101,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EE802F1E5B7AEF00CC6488 /* Client.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,8 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00EB454C1E564AC000B6E9A7 /* server.cpp in Sources */,
-				00EB454B1E564AC000B6E9A7 /* client.cpp in Sources */,
+				00EB454B1E564AC000B6E9A7 /* Client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +263,7 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../include";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../libs/lib/macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -273,6 +274,7 @@
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../../include";
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../libs/lib/macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

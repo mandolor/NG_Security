@@ -145,8 +145,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Classes\client.cpp" />
-    <ClCompile Include="..\Classes\server.cpp" />
+    <ClInclude Include="..\..\include\Client.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\Client.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
