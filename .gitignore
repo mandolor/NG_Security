@@ -1710,3 +1710,25 @@ TappGame.VC.db
 NGSecurity.VC.VC.opendb
 NGSecurity.VC.db
 ~$curity Patent.docx
+2BytesNetwork.VC.db
+2BytesNetwork.Build.CppClean.log
+2BytesNetwork.idb
+2BytesNetwork.log
+2BytesNetwork.pdb
+2BytesNetwork.lastbuildstate
+CL.command.1.tlog
+CL.read.1.tlog
+CL.write.1.tlog
+Lib-link.read.1.tlog
+Lib-link.write.1.tlog
+Lib.command.1.tlog
+link.command.1.tlog
+link.read.1.tlog
+link.write.1.tlog
+Client.obj
+Server.obj
+lib2BytesNetwork_d.lib
+vc141.idb
+vc141.pdb
+unsuccessfulbuild
+NGSecurity.vcxproj.user

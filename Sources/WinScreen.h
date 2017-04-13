@@ -10,6 +10,7 @@ class WinScreen : public cocos2d::Layer
 public:
     static cocos2d::Scene* createScene();
     virtual bool init();
+	void boost_callback(char* answer);
 	
 	static WinScreen* create();
 };

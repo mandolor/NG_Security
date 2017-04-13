@@ -11,10 +11,12 @@
 #include "GlobalGameStates.h"
 #include "FailScreen.h"
 #include "WinScreen.h"
+#include "Client.h"
 
 #include <boost/asio.hpp>
 
 #pragma comment(lib, "libcocos2d.lib")
+#pragma comment(lib, "lib2BytesNetwork_d.lib")
 
 USING_NS_CC;
 

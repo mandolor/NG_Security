@@ -2,10 +2,19 @@
 #include "GameScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
+#include "Client.h"
+#include "boost/bind.hpp"
 
 USING_NS_CC;
 
 using namespace cocostudio::timeline;
+
+//---------------------------------------------------------------------
+struct SecureSequence
+{
+	int count;
+	char* sequence;	//needed to be reparsed
+};
 
 //---------------------------------------------------------------------
 Scene* WinScreen::createScene()
@@ -43,6 +52,16 @@ bool WinScreen::init()
         return false;
     }
 
+	Client::create_session( "127.0.0.1", "80", "true", boost::bind( &WinScreen::boost_callback ) );
+
+	// 8 random threads
+	// random order in digits from server
+	// every time random order
+	// char* of UTF-16
+
+
+
+
     auto sceneNode = CSLoader::createNode( "scenes/WinScreen.csb" );
     addChild(sceneNode);
 
@@ -72,4 +91,11 @@ bool WinScreen::init()
 	bttn_more->addClickEventListener( more_callback );
 	
     return true;
+}
+
+//---------------------------------------------------------------------
+void WinScreen::boost_callback( char* answer )
+{
+	// get answer
+	// if (answer is ok) then
 }

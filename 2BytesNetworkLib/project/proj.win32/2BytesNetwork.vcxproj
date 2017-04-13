@@ -81,7 +81,7 @@
       <PreprocessorDefinitions>OPENSSL_USE_DEPRECATED;OPENSSL_NO_SSL2;_WIN32_WINNT=0x0501;WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\include;C:\Program Files (x86)\Windows Kits\10\Include\10.0.10150.0\ucrt;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
