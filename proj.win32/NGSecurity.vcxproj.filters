@@ -34,6 +34,12 @@
     <ClCompile Include="..\Sources\SceneDirector.cpp">
       <Filter>Core\Scene Builder</Filter>
     </ClCompile>
+    <ClCompile Include="..\2BytesNetworkLib\project\Classes\Client.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\2BytesNetworkLib\project\Classes\Server.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\AppDelegate.h">
@@ -77,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="..\Sources\SceneDirector.h">
       <Filter>Core\Scene Builder</Filter>
+    </ClInclude>
+    <ClInclude Include="..\2BytesNetworkLib\include\Client.h">
+      <Filter>Common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

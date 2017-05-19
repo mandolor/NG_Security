@@ -22,14 +22,14 @@
     <ProjectGuid>{63EFD105-3CD9-4387-8DB8-C49716C4DAF9}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>My2BytesNextwork</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
     <ProjectName>2BytesNetwork</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -87,7 +87,7 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <Lib>
-      <AdditionalDependencies>ssleay32.lib;libeay32.lib;libboost_timer-vc140-mt-sgd-1_63.lib;libboost_thread-vc140-mt-sgd-1_63.lib;libboost_system-vc140-mt-sgd-1_63.lib;libboost_filesystem-vc140-mt-sgd-1_63.lib;</AdditionalDependencies>
+      <AdditionalDependencies>lib2BytesNetwork_d.lib;ssleay32.lib;libeay32.lib;libboost_timer-vc140-mt-sgd-1_63.lib;libboost_thread-vc140-mt-sgd-1_63.lib;libboost_system-vc140-mt-sgd-1_63.lib;libboost_filesystem-vc140-mt-sgd-1_63.lib;</AdditionalDependencies>
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(ProjectDir)..\libs\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
