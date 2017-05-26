@@ -37,9 +37,6 @@
     <ClCompile Include="..\2BytesNetworkLib\project\Classes\Client.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\2BytesNetworkLib\project\Classes\Server.cpp">
-      <Filter>Common</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Sources\AppDelegate.h">

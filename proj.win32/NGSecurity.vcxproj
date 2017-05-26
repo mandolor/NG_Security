@@ -156,7 +156,6 @@ xcopy "$(OutDir)..\*.dll" "$(OutDir)" /D /Y</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\2BytesNetworkLib\project\Classes\Client.cpp" />
-    <ClCompile Include="..\2BytesNetworkLib\project\Classes\Server.cpp" />
     <ClCompile Include="..\Sources\AppDelegate.cpp" />
     <ClCompile Include="..\Sources\FailScreen.cpp" />
     <ClCompile Include="..\Sources\GamePhysics.cpp" />
