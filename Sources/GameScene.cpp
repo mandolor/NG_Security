@@ -11,9 +11,6 @@
 #include "GlobalGameStates.h"
 #include "FailScreen.h"
 #include "WinScreen.h"
-#include "Client.h"
-
-#include <boost/asio.hpp>
 
 #pragma comment(lib, "libcocos2d.lib")
 

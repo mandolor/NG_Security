@@ -2,8 +2,6 @@
 #include "GameScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-#include "Client.h"
-#include "boost/bind.hpp"
 
 USING_NS_CC;
 
@@ -52,7 +50,7 @@ bool WinScreen::init()
         return false;
     }
 
-	Client::create_session( "127.0.0.1", "80", "true", boost::bind( &WinScreen::boost_callback, this, boost::placeholders::_1 ) );
+	// Client::create_session( "127.0.0.1", "80", "true", boost::bind( &WinScreen::boost_callback, this, boost::placeholders::_1 ) );
 
 	// 8 random threads
 	// random order in digits from server
