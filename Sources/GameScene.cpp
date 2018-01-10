@@ -131,13 +131,6 @@ void GameScene::_generateSecurityObjects()
 //---------------------------------------------------------------------
 void GameScene::_onEventCollide( GameObject* ip_sphere )
 {
-	auto scene = WinScreen::createScene();
-	Director::getInstance()->replaceScene( TransitionFade::create( 1, scene ) );
-	
-	
-	
-	
-	
 	SceneRule* p_scene_rule = mp_scene_director->getSecuritySceneRule( m_security_scene );
 	std::vector<SecurityTargetType> p_target_orders = p_scene_rule->getInteractionOrder();
 

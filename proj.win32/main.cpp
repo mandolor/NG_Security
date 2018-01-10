@@ -8,7 +8,7 @@ extern "C" FILE * __cdecl __iob_func( void ) { return _iob; }
 int ( WINAPIV * __vsnprintf )( char *, size_t, const char*, va_list ) = _vsnprintf;
 
 //---------------------------------------------------------------------
-int APIENTRY _tWinMain(HINSTANCE hInstance,
+int _stdcall _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
                        LPTSTR    lpCmdLine,
                        int       nCmdShow)

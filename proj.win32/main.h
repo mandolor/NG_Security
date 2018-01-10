@@ -6,8 +6,9 @@
 // Windows Header Files:
 #include <windows.h>
 #include <tchar.h>
+#include <windowsx.h>
 
 // C RunTime Header Files
-#include "CCStdC.h"
+#include "platform/CCStdC.h"
 
 #endif    // __MAIN_H__
